@@ -1,0 +1,99 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f3f3;
+  padding: 20px;
+  text-align: center;
+  min-height: 95vh;
+}
+
+.frase {
+  font-size: 2rem;
+  max-width: 800px;
+  line-height: 1.4;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #333;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+  display: inline-block;
+}
+.frase::after {
+  content: '|';
+  margin-left: 4px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.formulario {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+  gap: 10px;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+}
+.register {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  width: 600px;
+  gap: 10px;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+}
+.login {
+  display: flex;
+  margin: 50px;
+  flex-direction: column;
+  width: 600px;
+  gap: 10px;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+}
+
+.formulario input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.shine {
+  background: linear-gradient(
+    120deg,
+    #eed7d7 0%, 
+    rgb(249, 69, 69) 20%, 
+    #eed7d7 40%
+  );
+  background-size: 200%;
+  animation: move 2s infinite linear;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes move {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}

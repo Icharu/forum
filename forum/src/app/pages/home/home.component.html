@@ -1,3 +1,57 @@
-<section>
-    
-</section>
+<div class="container">
+
+  <div *ngIf="!mostrarFormulario">
+      <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
+    </div>
+  </div>
+
+  <form *ngIf="mostrarFormulario" class="formulario fade-slide-up">
+    <div class="login">
+    <h2>Faça login na sua conta</h2>
+    <label>Email</label>
+    <input
+      type="text1"
+      placeholder="Seu email"
+      name="email"
+    />
+    <label>Senha</label>
+    <input
+      type="password2"
+      placeholder="********"
+      name="senha3"
+      required
+    />
+    <button type="submit2" (click)="VerForum()">Logar</button>
+    </div>
+    <div class="register">
+    <h2>Crie uma nova conta</h2>
+    <label>Nome</label>
+    <input
+      type="text"
+      placeholder="Não precisa ser nome real"
+      name="nome"
+    />
+    <label>Email</label>
+    <input
+      type="email"
+      placeholder="seu@email.com"
+      name="email"
+    />
+    <label>Senha</label>
+    <input
+      type="password"
+      placeholder="Escolha uma senha forte"
+      name="senha"
+      required
+    />
+    <label>Confirmar senha</label>
+    <input
+      type="password"
+      placeholder="Confirme a senha"
+      name="confirmarSenha"
+      required
+    />
+    <button type="submit" (click)="VerForum()">Criar conta</button>
+    </div>
+  </form>
+    </div>
