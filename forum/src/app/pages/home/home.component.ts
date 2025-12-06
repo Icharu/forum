@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
 
     if (this.indiceLetra < fraseAtual.length) {
       this.indiceLetra++;
-      setTimeout(() => this.digitarFrase(), 50);
+      setTimeout(() => this.digitarFrase(), 30);
     }
     else {
       setTimeout(() => {
