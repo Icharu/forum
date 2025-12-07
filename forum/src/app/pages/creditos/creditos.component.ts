@@ -5,14 +5,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 @Component({
     selector: 'app-creditos',
     templateUrl: './creditos.component.html',
     styleUrls: ['./creditos.component.css'],
     standalone: true,
-    imports: [CommonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
 })
 export class CreditosComponent implements OnInit {
 

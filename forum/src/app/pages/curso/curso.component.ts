@@ -5,7 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
@@ -14,7 +14,7 @@ import { PdfDownloadService } from '../../services/pdfdownload.service';
     templateUrl: './curso.component.html',
     styleUrls: ['./curso.component.css'],
     standalone: true,
-    imports: [CommonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
 })
 export class CursoComponent implements OnInit {
 

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { AuthService } from '../../services/auth.service';
@@ -12,7 +12,7 @@ import { PdfDownloadService } from '../../services/pdfdownload.service';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
     standalone: true,
-    imports: [CommonModule, HttpClientModule, ReactiveFormsModule]
+    imports: [HttpClientModule, ReactiveFormsModule]
 })
 export class HomeComponent implements AfterViewInit {
       frases: SafeHtml[] = [];
