@@ -3,10 +3,10 @@
   <!-- SideNav -->
   <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
     <mat-nav-list>
-      <a mat-list-item (click)="VoltarForum()" class="white"> Inicio</a>
-      <a mat-list-item (click)="IrParaCurso()" class="white"> Curso</a>
-      <a mat-list-item (click)="IrParaFaqs()" class="white"> Dúvidas Frequentes</a>
-      <a mat-list-item (click)="IrParaCreditos()" class="white"> Creditos</a>
+      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
+      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Curso</a>
+      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
+      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Creditos</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
