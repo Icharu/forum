@@ -17,18 +17,15 @@ export const routes: Routes = [
     },
     {
         path: 'forum',
-        component: ForumComponent,
-        canActivate: [AuthGuard]
+        component: ForumComponent
     },
     {
         path: 'curso',
-        component: CursoComponent,
-        canActivate: [AuthGuard]
+        component: CursoComponent
     },
     {
         path: 'creditos',
-        component: CreditosComponent,
-        canActivate: [AuthGuard]
+        component: CreditosComponent
     },
     { 
         path: '**', 

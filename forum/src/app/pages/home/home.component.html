@@ -1,54 +1,17 @@
 <div class="container">
+  
 
-
-  @if (!mostrarFormulario) {
-    <div class="form">
-      <img src="/gof/icarus2.gif" class="gif" alt="silly">
+  <div *ngIf="!mostrarFormulario" class="form">
+    <img src="/gof/icarus2.gif" class="gif" alt="silly">
       <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
-      </div>
     </div>
-  }
+  </div>
 
-  @if (mostrarFormulario) {
-    <form class="formulario fade-slide-up">
-      <form [formGroup]="loginForm" (ngSubmit)="submit()" class="login">
-        <img src="/gof/icarus.gif" class="gif" alt="yknow">
-        <label>Email</label>
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Digite seu email"
-          >
-          @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
-            <div class="erro">
-              @if (loginForm.get('email')?.errors?.['required']) {
-                <small>O email é obrigatório.</small>
-              }
-              @if (loginForm.get('email')?.errors?.['email']) {
-                <small>Formato de email inválido.</small>
-              }
-            </div>
-          }
-          <label>Senha</label>
-          <input
-            type="password"
-            formControlName="password"
-            placeholder="Digite sua senha"
-            >
-            @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
-              <div class="erro">
-                @if (loginForm.get('password')?.errors?.['required']) {
-                  <small>A senha é obrigatória.</small>
-                }
-                @if (loginForm.get('password')?.errors?.['minlength']) {
-                  <small>
-                    A senha deve ter pelo menos 6 caracteres.
-                  </small>
-                }
-              </div>
-            }
-            <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
-          </form>
-        </form>
-      }
+  <form *ngIf="mostrarFormulario" class="formulario fade-slide-up">
+    <div class="login">
+          <h2>Entrar No Fórum</h2>
+    <button type="submit" (click)="VerForum()">Entrar</button>
+    </div>
+
+  </form>
     </div>

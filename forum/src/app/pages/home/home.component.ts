@@ -1,18 +1,18 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PdfDownloadService } from '../../services/pdfdownload.service';
+import { CommonModule } from '@angular/common';
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
     standalone: true,
-    imports: [HttpClientModule, ReactiveFormsModule]
+    imports: [CommonModule]
 })
 export class HomeComponent implements AfterViewInit {
       frases: SafeHtml[] = [];
@@ -99,25 +99,4 @@ export class HomeComponent implements AfterViewInit {
       }, 1500); 
     }
   }
-   submit() {
-  if (this.loginForm.valid) {
-    const { email, password } = this.loginForm.value;
-
-    this.loginService.login(email, password).subscribe({
-      next: () => {
-        alert("Login realizado com sucesso!");
-        
-        localStorage.setItem('logged', 'true');
-        
-        this.authService.setUserEmail(email);
-        this.router.navigate(['/forum'], { state: { email } });
-      },
-      error: () => {
-        alert("Credenciais inválidas. Tente novamente.");
-      }
-    });
-  } else {
-    alert("Preencha todos os campos corretamente.");
-  }
-}
 }
