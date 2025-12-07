@@ -56,6 +56,19 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .Bemvindo {
   display: flex;
