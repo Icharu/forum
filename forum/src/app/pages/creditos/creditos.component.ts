@@ -15,13 +15,18 @@ import { Router } from '@angular/router';
     imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
 })
 export class CreditosComponent implements OnInit {
+    frases: SafeHtml[] = [];
 
-
-
-  
+    rawFrases: string[] = [
+        '<strong>Criador do Site</strong>'
+        ];
     constructor(private router: Router, private sanitizer: DomSanitizer) { }
     opened: boolean = true;
+        textoDigitado: SafeHtml = '';
+    indiceFrase = 0;
+    indiceLetra = 0;
     ngOnInit() {
+        this.digitarFrase();
 }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -35,4 +40,28 @@ export class CreditosComponent implements OnInit {
     VoltarForum() {
         this.router.navigate(['/forum']);
     }
+      abrirSite(url: string): void {
+  window.open(url, "_blank");
+}
+        digitarFrase() {
+    const fraseAtual = this.rawFrases[this.indiceFrase];
+
+    const parte = fraseAtual.substring(0, this.indiceLetra);
+
+    this.textoDigitado = this.sanitizer.bypassSecurityTrustHtml(parte);
+
+    if (this.indiceLetra < fraseAtual.length) {
+      this.indiceLetra++;
+      setTimeout(() => this.digitarFrase(), 30);
+    }
+    else {
+      setTimeout(() => {
+        if (this.indiceFrase < this.rawFrases.length - 1) {
+          this.indiceFrase++;
+          this.indiceLetra = 0;
+          this.digitarFrase();
+        }
+      }, 1500); 
+    }
+  }
 }

@@ -50,11 +50,6 @@ export class HomeComponent implements AfterViewInit {
     this.digitarFrase();
   });
 }
-
-    nome = "";
-    email = "";
-    senha = "";
-    confirmarSenha = "";
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;

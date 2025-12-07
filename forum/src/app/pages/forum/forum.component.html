@@ -3,9 +3,9 @@
   <!-- SideNav -->
   <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
     <mat-nav-list>
-      <a mat-list-item (click)="VoltarForum()"> Inicio</a>
-      <a mat-list-item (click)="IrParaCurso()"> Curso</a>
-      <a mat-list-item (click)="IrParaCreditos()"> Creditos</a>
+      <a mat-list-item (click)="VoltarForum()" class="white"> Inicio</a>
+      <a mat-list-item (click)="IrParaCurso()" class="white"> Curso</a>
+      <a mat-list-item (click)="IrParaCreditos()" class="white"> Creditos</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -23,8 +23,9 @@
     </mat-toolbar>
     <div class="header">
       <div class="Bemvindo">
-        <h1>Bem-vindo ao Fórum!</h1>
-        <img src="/gof/icarus.gif" class="gif" alt="yknow">
+              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
+              </div>
+        <img src="/img/something.png" class="gif" alt="yknow">
       </div>
       <p>Compartilhe suas experiências, contate o criador para adicionar ao site.</p>
       <h2>Novo ao curso?</h2>

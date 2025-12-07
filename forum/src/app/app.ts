@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 
 @Component({
@@ -11,4 +11,17 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('forum');
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+
+    if (this.isMobileDevice()) {
+      alert('Este site não está disponível em dispositivos móveis.');
+      window.location.href = 'https://icarodejesus.com/unavailable';
+    }
+  }
+
+  private isMobileDevice(): boolean {
+    return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+  }
 }

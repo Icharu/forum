@@ -6,6 +6,7 @@
   padding: 20px;
   text-align: center;
   min-height: 95vh;
+  border-radius: 30px;
 }
 .form {
     display: flex;
