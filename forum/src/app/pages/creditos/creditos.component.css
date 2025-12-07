@@ -134,7 +134,7 @@ button {
   display: flex;
   justify-content: center;
 }
-.btn {
+a {
   padding: 10px;
   border: none;
   border-radius: 6px;

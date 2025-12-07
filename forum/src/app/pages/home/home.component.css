@@ -93,21 +93,13 @@
   border: none;
   outline: none;
 }
-
 button {
   padding: 10px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-}
-
-.login-container {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: #f5f7fb;
-  min-height: 80vh;
-  border-radius: 40px;
-  box-shadow: 0 0 5px rgba(59, 59, 59, 0.8);
 }

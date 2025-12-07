@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { AuthService } from '../../services/auth.service';
@@ -12,7 +15,7 @@ import { CommonModule } from '@angular/common';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
     standalone: true,
-    imports: [CommonModule]
+    imports: [CommonModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule]
 })
 export class HomeComponent implements AfterViewInit {
       frases: SafeHtml[] = [];
