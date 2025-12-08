@@ -141,6 +141,7 @@ mat-icon {
 }
 
 .book-card {
+  min-width: 300px;
   max-width: 300px;
   flex-shrink: 0;
   background: #fff;
