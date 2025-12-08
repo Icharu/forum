@@ -69,4 +69,7 @@ export class FaqsComponent implements OnInit {
   download() {
   this.pdfDownloadService.download('cursos/10.pdf', '10.pdf');
 }
+    IrParaTurmas() {
+        this.router.navigate(['/turmas']);
+    }
 }

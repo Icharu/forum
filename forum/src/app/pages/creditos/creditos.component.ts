@@ -67,4 +67,7 @@ export class CreditosComponent implements OnInit {
     IrParaFaqs() {
         this.router.navigate(['/faqs']);
     }
+        IrParaTurmas() {
+        this.router.navigate(['/turmas']);
+    }
 }

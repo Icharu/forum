@@ -1,27 +1,28 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { HttpClient } from '@angular/common/http';
+import { PdfDownloadService } from '../../services/pdfdownload.service';
 
 import { Router } from '@angular/router';
 @Component({
-    selector: 'app-forum',
-    templateUrl: './forum.component.html',
-    styleUrls: ['./forum.component.css'],
+    selector: 'app-turmas',
+    templateUrl: './turmas.component.html',
+    styleUrls: ['./turmas.component.css'],
     standalone: true,
     imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
 })
-export class ForumComponent implements OnInit {
+export class TurmasComponent implements OnInit {
           frases: SafeHtml[] = [];
 
   rawFrases: string[] = [
-    '<strong>Bem vindo ao Fórum</strong>'
+    '<strong>Turmas do Curso de Engenharia da Computação</strong>'
   ];
-   @ViewChild('carouselRef') carousel!: ElementRef;
-    constructor(private router: Router, private sanitizer: DomSanitizer) { }
+    constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
@@ -40,6 +41,9 @@ export class ForumComponent implements OnInit {
     }
     VoltarForum() {
         this.router.navigate(['/forum']);
+    }
+    IrParaFaqs() {
+        this.router.navigate(['/faqs']);
     }
     IrParaTurmas() {
         this.router.navigate(['/turmas']);
@@ -65,12 +69,7 @@ export class ForumComponent implements OnInit {
       }, 1500); 
     }
   }
-  IrParaFaqs() {
-        this.router.navigate(['/faqs']);
-    }
-      scrollCarousel(direction: number) {
-    const container = this.carousel.nativeElement;
-    const cardWidth = container.querySelector('.book-card').offsetWidth + 20;
-    container.scrollLeft += direction * cardWidth;
-  }
+  download() {
+  this.pdfDownloadService.download('cursos/10.pdf', '10.pdf');
+}
 }

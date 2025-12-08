@@ -5,6 +5,7 @@ import { CursoComponent } from './pages/curso/curso.component';
 import { CreditosComponent } from './pages/creditos/creditos.component';
 import { AuthGuard } from './auth.guard';
 import { FaqsComponent } from './pages/faq/faq.component';
+import { TurmasComponent } from './pages/turmas/turmas.component';
 
 export const routes: Routes = [
     { 
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path: 'faqs',
         component: FaqsComponent
+    },
+    {
+        path: 'turmas',
+        component: TurmasComponent
     },
     { 
         path: '**', 

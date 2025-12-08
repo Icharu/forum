@@ -20,7 +20,7 @@ export class CursoComponent implements OnInit {
     frases: SafeHtml[] = [];
 
     rawFrases: string[] = [
-        '<strong>Bem-vindo ao curso de Engenharia de Computação na UEMA</strong>'
+        '<strong>Bem-vindo ao curso de Engenharia de Computação</strong>'
         ];
     constructor(private router: Router, private sanitizer: DomSanitizer, private http: HttpClient, private pdfService: PdfDownloadService) { }
     textoDigitado: SafeHtml = '';
@@ -96,4 +96,7 @@ export class CursoComponent implements OnInit {
       }, 1500); 
     }
   }
+      IrParaTurmas() {
+        this.router.navigate(['/turmas']);
+    }
 }

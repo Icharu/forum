@@ -1,0 +1,103 @@
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- SideNav -->
+  <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
+    <mat-nav-list>
+      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
+      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Curso</a>
+      <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
+      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
+      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="username">Fórum do Curso de EngComp</span>
+      <span class="flex-spacer"></span>
+      <span class="username"></span>
+
+      <button mat-icon-button (click)="VoltarHome()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="header">
+        <div class="Bemvindo">
+              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
+              </div>
+              <img src="/img/something.png" class="gif" alt="yknow">
+      </div>
+      <p>
+        Todos estes que você aqui são guerreiros, que desejam terminar o curso por tudo que seja possível.
+        <br>Seja calouro, veterano, ou já formado, você passou/está passando por aqui e sempre será gravado.
+      </p>
+        <section class="know-more3" id="know-more3">
+  <div class="text">
+    <h2>Todas as turmas de Engenharia da Computação:</h2>
+    <p>Será sempre gravado do mais novo até o mais antigo</p>
+    <div class="grid-container">
+              <div class="book-card">
+        <div class="book-image">
+          <img src="/img/1.jpg" alt="Introdução ao Curso">
+        </div>
+        <div class="book-content">
+          <h3>Turma 2025.2</h3>
+          <p>"Insira aqui uma frase que represente sua turma"</p>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-image">
+          <img src="/img/2.jpg" alt="Bisseção">
+        </div>
+        <div class="book-content">
+          <h3>Turma 2025.1</h3>
+          <p>"Insira aqui uma frase que represente sua turma"</p>
+        </div>
+      </div>
+        <div class="book-card">
+        <div class="book-image">
+          <img src="/img/3.jpg" alt="Bisseção">
+        </div>
+        <div class="book-content">
+          <h3>Turma 2024.2</h3>
+          <p>"Insira aqui uma frase que represente sua turma"</p>
+          <p>Sou deste período aqui! - Criador do site</p>
+        </div>
+      </div>
+        <div class="book-card">
+        <div class="book-image">
+          <img src="/img/3.jpg" alt="Bisseção">
+        </div>
+        <div class="book-content">
+          <h3>Turma 2024.1</h3>
+          <p>"Insira aqui uma frase que represente sua turma"</p>
+        </div>
+      </div>
+        <div class="book-card">
+        <div class="book-image">
+          <img src="/img/3.jpg" alt="Bisseção">
+        </div>
+        <div class="book-content">
+          <h3>Turma 2023.2</h3>
+          <p>"Insira aqui uma frase que represente sua turma"</p>
+        </div>
+      </div>
+        <div class="book-card">
+        <div class="book-image">
+          <img src="/img/3.jpg" alt="Bisseção">
+        </div>
+        <div class="book-content">
+          <h3>Turma 2023.1</h3>
+          <p>"Insira aqui uma frase que represente sua turma"</p>
+        </div>
+      </div>
+      <!--Essa é a parte final-->
+    </div>
+  </div>
+</section>
+    </div>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>

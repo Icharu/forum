@@ -1,5 +1,5 @@
 .sidenav-container {
-  height: 100vh;
+  height: 97vh;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
@@ -120,4 +120,58 @@ button {
 }
 mat-icon {
   font-size: 28px;
+}
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.grid-container {
+  display: flex !important;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.grid-container::-webkit-scrollbar {
+  display: none;
+}
+
+.book-card {
+  max-width: 300px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.book-image img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.book-content {
+  padding: 10px;
+}
+
+/* navigation buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-btn.prev {
+  left: 0;
+}
+
+.carousel-btn.next {
+  right: 0;
 }
