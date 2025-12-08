@@ -24,7 +24,7 @@ export class HomeComponent implements AfterViewInit {
     '  ',
     '',
     '<strong>Bem vindo</strong>',
-    '<strong>O curso de engenharia da computação sempre terá bastante <span class="shine">potencial.</span></strong>',
+    '<strong>O curso de engenharia de computação sempre terá bastante <span class="shine">potencial.</span></strong>',
     '<strong>Por isso, decidi fazer essa plataforma para compartilharmos nossas ideias</strong>',
     '<strong>Esse é um projeto para os alunos, por alunos, sempre alunos</strong>',
     '<strong>Junte-se a nós e faça parte dessa comunidade incrível!</strong>',

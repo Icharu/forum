@@ -21,7 +21,7 @@ export class TurmasComponent implements OnInit {
           frases: SafeHtml[] = [];
           showButton = false;
   rawFrases: string[] = [
-    '<strong>Turmas do Curso de Engenharia da Computação</strong>'
+    '<strong>Turmas do Curso de Engenharia de Computação</strong>'
   ];
     constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient) { }
     textoDigitado: SafeHtml = '';
