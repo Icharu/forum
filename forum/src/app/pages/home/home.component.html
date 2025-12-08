@@ -1,8 +1,7 @@
-<div class="container">
-  
 
+<div class="container">
   <div *ngIf="!mostrarFormulario" class="form">
-    <img src="/gof/icarus2.gif" class="gif" alt="silly">
+    <img *ngIf="showButton1" src="/gof/icarus2.gif" class="gif" alt="silly">
       <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
     </div>
     <button *ngIf="showButton" type="submit" class="btn fade-slide-up" (click)="VerForum()">Pular <mat-icon>open_in_new</mat-icon></button>

@@ -9,16 +9,17 @@ import { HttpClient } from '@angular/common/http';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
 
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-turmas',
     templateUrl: './turmas.component.html',
     styleUrls: ['./turmas.component.css'],
     standalone: true,
-    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, CommonModule]
 })
 export class TurmasComponent implements OnInit {
           frases: SafeHtml[] = [];
-
+          showButton = false;
   rawFrases: string[] = [
     '<strong>Turmas do Curso de Engenharia da Computação</strong>'
   ];
@@ -28,7 +29,14 @@ export class TurmasComponent implements OnInit {
     indiceLetra = 0;
     opened: boolean = true;
     ngOnInit() {
-    this.digitarFrase();
+      this.digitarFrase();
+      setTimeout(() => {
+      this.showButton = true;
+      setTimeout(() => {
+        this.showButton = false;
+      }, 6000);
+
+    }, 6000);
 }
     VoltarHome() {
         this.router.navigate(['/']);

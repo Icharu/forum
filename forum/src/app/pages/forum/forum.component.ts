@@ -7,16 +7,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-forum',
     templateUrl: './forum.component.html',
     styleUrls: ['./forum.component.css'],
     standalone: true,
-    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, CommonModule]
 })
 export class ForumComponent implements OnInit {
           frases: SafeHtml[] = [];
-
+          showButton = false;
   rawFrases: string[] = [
     '<strong>Bem vindo ao Fórum</strong>'
   ];
@@ -28,6 +29,13 @@ export class ForumComponent implements OnInit {
     opened: boolean = true;
     ngOnInit() {
     this.digitarFrase();
+  setTimeout(() => {
+  this.showButton = true;
+  setTimeout(() => {
+    this.showButton = false;
+  }, 6000);
+
+}, 6000);
 }
     VoltarHome() {
         this.router.navigate(['/']);

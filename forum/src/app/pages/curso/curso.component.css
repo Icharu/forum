@@ -226,3 +226,24 @@ button {
 mat-icon {
   font-size: 28px;
 }
+.img {
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+  background-color: #fff;
+  border-radius: 30px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; 
+}
+.img2 {
+  font-weight: bold;
+  max-width: 100px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+}

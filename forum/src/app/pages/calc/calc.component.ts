@@ -10,12 +10,13 @@ import { PdfDownloadService } from '../../services/pdfdownload.service';
 import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-calc',
     templateUrl: './calc.component.html',
     styleUrls: ['./calc.component.css'],
     standalone: true,
-    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, FormsModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, FormsModule, CommonModule]
 })
 export class CalcComponent implements OnInit {
         frases: SafeHtml[] = [];
@@ -23,7 +24,7 @@ export class CalcComponent implements OnInit {
         nota1: number = 0;
         nota2: number = 0;
         nota3: number = 0;
-
+        showButton = false;
   rawFrases: string[] = [
     '<strong>Calculadora de Notas!</strong>'
   ];
@@ -33,8 +34,14 @@ export class CalcComponent implements OnInit {
     indiceLetra = 0;
     opened: boolean = true;
     ngOnInit() {
-    this.digitarFrase();
-}
+        this.digitarFrase();
+        setTimeout(() => {
+            this.showButton = true;
+            setTimeout(() => {
+                this.showButton = false;
+            }, 6000);
+        }, 6000);
+    }
     VoltarHome() {
         this.router.navigate(['/']);
     }

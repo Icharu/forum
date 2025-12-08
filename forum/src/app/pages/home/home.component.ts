@@ -28,11 +28,13 @@ export class HomeComponent implements AfterViewInit {
     '<strong>Por isso, decidi fazer essa plataforma para compartilharmos nossas ideias</strong>',
     '<strong>Esse é um projeto para os alunos, por alunos, sempre alunos</strong>',
     '<strong>Junte-se a nós e faça parte dessa comunidade incrível!</strong>',
+    '<strong>Somos juntos e seremos a melhor comunidade de computação do Maranhão.</strong>',
     '   ',
     ''
   ];
     loginForm!: FormGroup;
     showButton = false;
+    showButton1 = false;
     constructor(
       private router: Router, private sanitizer: DomSanitizer,private authService: AuthService,
     private loginService: LoginService
@@ -56,6 +58,9 @@ export class HomeComponent implements AfterViewInit {
     setTimeout(() => {
     this.showButton = true;
   }, 6000);
+    setTimeout(() => {
+    this.showButton1 = true;
+  }, 3000);
 }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;

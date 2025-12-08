@@ -7,16 +7,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-creditos',
     templateUrl: './creditos.component.html',
     styleUrls: ['./creditos.component.css'],
     standalone: true,
-    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, CommonModule]
 })
 export class CreditosComponent implements OnInit {
     frases: SafeHtml[] = [];
-
+    showButton = false;
     rawFrases: string[] = [
         '<strong>Criador do Site</strong>'
         ];
@@ -27,7 +28,13 @@ export class CreditosComponent implements OnInit {
     indiceLetra = 0;
     ngOnInit() {
         this.digitarFrase();
-}
+        setTimeout(() => {
+            this.showButton = true;
+            setTimeout(() => {
+                this.showButton = false;
+            }, 6000);
+        }, 6000);
+    }
     VoltarHome() {
         this.router.navigate(['/']);
     }

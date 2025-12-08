@@ -9,16 +9,17 @@ import { MatListModule } from '@angular/material/list';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-curso',
     templateUrl: './curso.component.html',
     styleUrls: ['./curso.component.css'],
     standalone: true,
-    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, CommonModule]
 })
 export class CursoComponent implements OnInit {
     frases: SafeHtml[] = [];
-
+    showButton = false;
     rawFrases: string[] = [
         '<strong>Bem-vindo ao curso de Engenharia de Computação</strong>'
         ];
@@ -28,7 +29,14 @@ export class CursoComponent implements OnInit {
     indiceLetra = 0;
     opened: boolean = true;
     ngOnInit() {
-        this.digitarFrase();
+      this.digitarFrase();
+      setTimeout(() => {
+      this.showButton = true;
+      setTimeout(() => {
+        this.showButton = false;
+      }, 6000);
+
+    }, 6000);
 }
     VoltarHome() {
         this.router.navigate(['/']);
