@@ -130,7 +130,7 @@ button {
 mat-icon {
   font-size: 28px;
 }
-.img {
+.img1 {
   font-weight: bold;
   align-items: center;
   display: flex;
@@ -143,6 +143,7 @@ mat-icon {
   right: 20px;
   z-index: 9999; 
 }
+
 .img2 {
   font-weight: bold;
   max-width: 100px;
@@ -150,4 +151,13 @@ mat-icon {
   display: flex;
   justify-content: center;
   animation: fadeSlideUp 0.7s ease-out forwards;
+}
+.img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 300px;
+    height: auto;
+    animation: fadeSlideUp 0.7s ease-out forwards;
 }
