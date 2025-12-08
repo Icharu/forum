@@ -1,0 +1,54 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.Bemvindo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 100vh;
+  background: #fff;
+  border-radius: 30px;
+}
+.frase {
+  font-size: 2rem;
+  max-width: 100%;
+  line-height: 1.4;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #333;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+  display: inline-block;
+}
+.frase::after {
+  content: '|';
+  margin-left: 4px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.gif {
+    width: 200px;
+    height: auto;
+}
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+mat-icon {
+  font-size: 28px;
+}

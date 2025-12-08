@@ -99,4 +99,7 @@ export class CursoComponent implements OnInit {
       IrParaTurmas() {
         this.router.navigate(['/turmas']);
     }
+    IrParaVida() {
+        this.router.navigate(['/vida']);
+    }
 }

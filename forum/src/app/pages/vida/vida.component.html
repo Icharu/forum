@@ -25,23 +25,34 @@
       </button>
     </mat-toolbar>
     <div class="header">
-        <div class="criador1">
-            <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
+      <div class="Bemvindo">
+              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
               </div>
-        <img src="/gof/icarus.gif" class="image">
+        <img src="/img/something.png" class="gif" alt="yknow">
       </div>
-    </div>
-          <div class="criador">
-        <div class="coluna">
-          <h1>Icaro de Jesus Silva</h1>
-          <p>Estudante de Engenharia da Computação na UEMA, criador deste site para ajudar os calouros a se situarem no curso.</p>
-          <button>
-        <a (click)="abrirSite('https://icarodejesus.com/')">Portfolio   <mat-icon>open_in_new</mat-icon></a>
-      </button>
+      <p>Compartilhe suas experiências, contate o criador para adicionar ao site.</p>
+
+      <div class="row">
+
+        <div class="column">
+        <h2>Prédio de Engenharia da Computação</h2>
+        <p>Nós como estudantes de engenharia da computação temos o nosso próprio prédio, localizado no CCT-UEMA, Centro de Ciências Tecnológicas.
+        Assim, temos nosso ambiente de estudos específico para nossa área, fortalecendo a nossa base de pesquisa e formatação de trabalhos acadêmicos.
+        </p>
         </div>
-          <img src="/img/Icarus.jpeg" class="imagem">
-          
+        
+        <img src="/img/engcomp.jpg" alt="engcomp" class="img">
+
       </div>
+
+        <div class="column">
+        <h2>Horários</h2>
+        <p>A partir do 1° Período o curso é na maioria dos casos de manhã, mas o curso em si é diurno.
+            <br><br>Essa fase de manhã só ocorre até o quarto período, onde o curso se torna principalmente ativo de tarde no quinto período à diante.
+        </p>
+        </div>
+      
+    </div>
   </mat-sidenav-content>
   
 </mat-sidenav-container>

@@ -1,0 +1,158 @@
+.sidenav-container {
+  height: 97vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+}
+
+.sidenav {
+  width: 240px;
+  background: #2b2b2b;
+  border-right: 1px solid #e0e0e0;
+}
+.white {
+  color: #f3f3f3;
+}
+
+  a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f3f3f3;
+  }
+.toolbar {
+  background: #f9f9f9;
+  color: #303030;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: 64px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+  .username {
+    margin-right: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem;
+  background: #f9f9f9;
+}
+.header {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 40px;
+    animation: fadeSlideUp 0.7s ease-out forwards;
+}
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.Bemvindo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-image: url('/img/engcomp.jpg');
+  background-position: 50%;
+  gap: 20px;
+  border-radius: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.frase {
+  font-size: 2rem;
+  max-width: 800px;
+  line-height: 1.4;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #f3f3f3;
+  animation: fadeSlideUp 0.7s ease-out forwards;
+  display: inline-block;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+.frase::after {
+  content: '|';
+  margin-left: 4px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.gif {
+    width: 200px;
+    height: auto;
+}
+mat-icon {
+  font-size: 28px;
+}
+.img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 400px;
+    height: auto;
+    border-radius: 30px;
+    animation: fadeSlideUp 0.7s ease-out forwards;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 30px;
+}
+.column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

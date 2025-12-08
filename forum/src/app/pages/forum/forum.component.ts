@@ -44,6 +44,9 @@ export class ForumComponent implements OnInit {
     IrParaTurmas() {
         this.router.navigate(['/turmas']);
     }
+    IrParaVida() {
+        this.router.navigate(['/vida']);
+    }
         digitarFrase() {
     const fraseAtual = this.rawFrases[this.indiceFrase];
 

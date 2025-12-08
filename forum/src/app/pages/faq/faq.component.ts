@@ -72,4 +72,7 @@ export class FaqsComponent implements OnInit {
     IrParaTurmas() {
         this.router.navigate(['/turmas']);
     }
+    IrParaVida() {
+        this.router.navigate(['/vida']);
+    }
 }

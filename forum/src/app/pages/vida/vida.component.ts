@@ -5,28 +5,30 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { HttpClient } from '@angular/common/http';
+import { PdfDownloadService } from '../../services/pdfdownload.service';
 
 import { Router } from '@angular/router';
 @Component({
-    selector: 'app-creditos',
-    templateUrl: './creditos.component.html',
-    styleUrls: ['./creditos.component.css'],
+    selector: 'app-vida',
+    templateUrl: './vida.component.html',
+    styleUrls: ['./vida.component.css'],
     standalone: true,
     imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule]
 })
-export class CreditosComponent implements OnInit {
-    frases: SafeHtml[] = [];
+export class VidaComponent implements OnInit {
+          frases: SafeHtml[] = [];
 
-    rawFrases: string[] = [
-        '<strong>Criador do Site</strong>'
-        ];
-    constructor(private router: Router, private sanitizer: DomSanitizer) { }
-    opened: boolean = true;
-        textoDigitado: SafeHtml = '';
+  rawFrases: string[] = [
+    '<strong>Vida no Curso de Engenharia da Computação</strong>'
+  ];
+    constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient) { }
+    textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
+    opened: boolean = true;
     ngOnInit() {
-        this.digitarFrase();
+    this.digitarFrase();
 }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -40,9 +42,12 @@ export class CreditosComponent implements OnInit {
     VoltarForum() {
         this.router.navigate(['/forum']);
     }
-      abrirSite(url: string): void {
-  window.open(url, "_blank");
-}
+    IrParaFaqs() {
+        this.router.navigate(['/faqs']);
+    }
+    IrParaVida() {
+        this.router.navigate(['/vida']);
+    }
         digitarFrase() {
     const fraseAtual = this.rawFrases[this.indiceFrase];
 
@@ -64,13 +69,10 @@ export class CreditosComponent implements OnInit {
       }, 1500); 
     }
   }
-    IrParaFaqs() {
-        this.router.navigate(['/faqs']);
-    }
-        IrParaTurmas() {
+  download() {
+  this.pdfDownloadService.download('cursos/10.pdf', '10.pdf');
+}
+    IrParaTurmas() {
         this.router.navigate(['/turmas']);
-    }
-    IrParaVida() {
-        this.router.navigate(['/vida']);
     }
 }

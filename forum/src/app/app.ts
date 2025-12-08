@@ -17,7 +17,7 @@ export class App {
 
     if (this.isMobileDevice()) {
       alert('Este site não está disponível em dispositivos móveis.');
-      window.location.href = 'https://icarodejesus.com/unavailable';
+      window.location.href = 'http://icarodejesus.com/404';
     }
   }
 
