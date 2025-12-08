@@ -114,9 +114,9 @@ button {
   }
 }
 .gif {
-    width: 200px;
+    max-width: 200px;
     height: auto;
-    
+    padding: 40px;
 }
 mat-icon {
   font-size: 28px;
