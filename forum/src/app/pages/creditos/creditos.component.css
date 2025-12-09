@@ -70,11 +70,13 @@ button {
 }
 .btn1 {
   padding: 10px;
+  gap: 10px;
+  max-width: 150px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  color: #2B3C50;
+  background: #2B3C50;
 }
 .criador {
   display: flex;
