@@ -83,12 +83,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  min-height: 50vh;
   gap: 20px;
-  background: #fff;
-  border-radius: 30px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background-image: url("/img/engcomp.jpg");
+  background-size: cover;
 }
+
 
 @keyframes fadeSlideUp {
   0% {
@@ -101,14 +101,15 @@ button {
   }
 }
 .frase {
-  font-size: 2rem;
+  font-size: 6rem;
   max-width: 800px;
   line-height: 1.4;
   align-items: center;
   justify-content: center;
   display: flex;
-  color: #333;
+  color: #fff;
   animation: fadeSlideUp 0.7s ease-out forwards;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   display: inline-block;
 }
 .frase::after {
