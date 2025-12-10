@@ -13,7 +13,7 @@
     <mat-nav-list>
       <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
       <a mat-list-item (click)="IrParaVida()" class="white"><mat-icon>school</mat-icon> Vida no Curso</a>
-      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Curso</a>
+      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Estrutura Curricular</a>
       <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
       <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
       <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
@@ -40,14 +40,18 @@
         <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>
-    <div class="header">
-      <div class="Bemvindo">
-              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
-              </div>
-        <img src="/img/something.png" class="gif" alt="yknow">
+        <div class="Bemvindo">
+            <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
+        </div>
       </div>
+    <div class="header">
       <p>Compartilhe suas experiências, contate o criador para adicionar ao site.</p>
-
+      <h2>Novo no curso?</h2>
+        <p>Sabemos como é, entrar na faculdade que você tanto sonhou é uma coisa divertida, e sempre será um marco diferencial à sua profissionalidade.</p>
+        <p>Aqui você encontrará como estudar corretamente e as informações de cada semestre do curso de Engenharia de Computação na Universidade Estadual do Maranhão.</p>
+        <p>Se caso esteja nervoso, ansioso, não se preocupe, você ainda tem muito chão para percorrer.</p>
+        <p>Nós como veteranos criamos este site para guiar vocês e ter certeza que todos consigam se formar nesse curso dificil.</p>
+        <p>Você não está sozinho nessa jornada, sempre colocaremos mais informações aqui.</p>
       <div class="row">
 
         <div class="column">

@@ -21,7 +21,7 @@ export class VidaComponent implements OnInit {
           frases: SafeHtml[] = [];
           showButton = false;
   rawFrases: string[] = [
-    '<strong>Vida no Curso de Engenharia de Computação</strong>'
+    '<strong>Vida no Curso</strong>'
   ];
     constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient) { }
     textoDigitado: SafeHtml = '';

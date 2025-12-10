@@ -21,7 +21,7 @@ export class CursoComponent implements OnInit {
     frases: SafeHtml[] = [];
     showButton = false;
     rawFrases: string[] = [
-        '<strong>Bem-vindo ao curso de Engenharia de Computação</strong>'
+        '<strong>Estrutura Curricular</strong>'
         ];
     constructor(private router: Router, private sanitizer: DomSanitizer, private http: HttpClient, private pdfService: PdfDownloadService) { }
     textoDigitado: SafeHtml = '';

@@ -90,17 +90,6 @@ button {
   display: flex;
   justify-content: center;
 }
-.Bemvindo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  background-image: url('/img/engcomp.jpg');
-  background-position: 50%;
-  gap: 20px;
-  border-radius: 30px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
 
 @keyframes fadeSlideUp {
   0% {
@@ -113,20 +102,30 @@ button {
   }
 }
 .frase {
-  font-size: 2rem;
+  font-size: 6rem;
   max-width: 800px;
   line-height: 1.4;
   align-items: center;
   justify-content: center;
   display: flex;
-  color: #f3f3f3;
+  color: #fff;
   animation: fadeSlideUp 0.7s ease-out forwards;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  display: inline-block;
 }
 .frase::after {
   content: '|';
   margin-left: 4px;
   animation: blink 0.8s infinite;
+}
+.Bemvindo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 20px;
+  background-image: url("/img/engcomp.jpg");
+  background-size: cover;
 }
 
 @keyframes blink {
