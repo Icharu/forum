@@ -5,8 +5,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
-import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -37,8 +35,7 @@ export class HomeComponent implements AfterViewInit {
     showButton = false;
     showImg1 = false;
     constructor(
-      private router: Router, private sanitizer: DomSanitizer,private authService: AuthService,
-    private loginService: LoginService
+      private router: Router, private sanitizer: DomSanitizer
     ) {
         this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -105,7 +102,7 @@ export class HomeComponent implements AfterViewInit {
           this.indiceLetra = 0;
           this.digitarFrase();
         } else {
-          this.mostrarFormulario = true;
+          this.mostrarFormulario = true; // É o que faz desaparecer o div depois
         }
       }, 1500); 
     }

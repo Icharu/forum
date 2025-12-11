@@ -4,3 +4,7 @@
       font-family: "Poppins", sans-serif;
     }
     
+    .custom-snackbar {
+        background: #2B3C50 !important;
+        color: white !important;
+  }

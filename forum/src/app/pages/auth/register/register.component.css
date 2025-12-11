@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .sidenav {
   width: 240px;
   background: #fff;
@@ -44,7 +43,6 @@ a {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin: 5px;
   font-weight: bold;
   color: #2B3C50;
 }
@@ -233,4 +231,48 @@ mat-icon {
 }
 .likes {
   padding: 10px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+}
+.form-group label {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-group input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  min-width: 300px;
+}
+.form-group button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  background-color: #2B3C50;
+  color: #fff;
+  justify-content: center;
+  min-width: 150px;
+}
+.form-group a {
+  color: #2B3C50;
+}
+
+.shell {
+  padding: 30px;
+  border-radius: 30px;
 }

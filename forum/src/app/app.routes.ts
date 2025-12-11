@@ -8,6 +8,8 @@ import { FaqsComponent } from './pages/faq/faq.component';
 import { TurmasComponent } from './pages/turmas/turmas.component';
 import { VidaComponent } from './pages/vida/vida.component';
 import { CalcComponent } from './pages/calc/calc.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 export const routes: Routes = [
     { 
     path: '', 
@@ -45,6 +47,19 @@ export const routes: Routes = [
     {
         path: 'vida',
         component: VidaComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'register',
+        component: RegisterComponent
+    },
+    {
+        path: 'admin',
+        component: RegisterComponent,
+        canActivate: [AuthGuard]
     },
     { 
         path: '**', 

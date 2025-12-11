@@ -1,6 +1,6 @@
-<div *ngIf="showButton" class="img">
+    <div *ngIf="showButton" class="img">
   <img src="/img/welcome.png" class="img2" alt="yknow">
-  <div>
+  <div class="likes">
     <h2>Está curtindo o site?</h2>
     <p>
       Se quiser sugerir alguma coisa, contate o dev!
@@ -19,8 +19,8 @@
       <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
     </mat-nav-list>
         <div class="updates">
-      <h2 class="updates2"><mat-icon>update</mat-icon> Atualizações:</h2>
-      <p class="updates2">-> Mudança de design
+      <h2><mat-icon>update</mat-icon> Atualizações:</h2>
+      <p>-> Mudança de design
         <br>-> Adicionado Update Log.
       </p>
         <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
@@ -38,28 +38,52 @@
       <button *ngIf="isLogged" class="btn1" (click)="logout()">
             Log-out
       </button>
-        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
-            Login
-      </button>
     </mat-toolbar>
-    <div class="header">
-      <div class="Bemvindo">
+          <div class="Bemvindo">
               <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
               </div>
-        <img src="/img/something.png" class="gif" alt="yknow">
       </div>
-      <p>Só por que está aqui não quer dizer que não passou.</p>
+    <div class="header">
+      <h2>Registre-se</h2>
+      <p>Quer participar da comunidade realmente? Postando e fazendo perguntas? Crie sua conta e entre conosco!</p>
+  <div class="text">
+        <form [formGroup]="signupForm" (ngSubmit)="submit()">
+      <div class="shell">
+      <div class="form-group">
+        <label for="username">Usuário</label>
+        <input id="username" type="text" formControlName="username" placeholder="Digite seu nome de usuário">
+        <small *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+          O nome de usuário deve ter pelo menos 2 caracteres.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input id="password" type="password" formControlName="password" placeholder="Crie uma senha">
+        <small *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          A senha deve ter no mínimo 6 caracteres.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar senha</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Repita sua senha">
+        <small *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
+          Confirme sua senha.
+        </small>
+      </div>
+      <div class="form-group">
+      <button type="submit" [disabled]="signupForm.invalid">Registrar</button>
+
+      <p class="login-text">
+        Já tem conta?
+        <a (click)="navigate()">Entrar</a>
+      </p>
+      </div>
+      </div>
+    </form>
     </div>
-<form (ngSubmit)="calcular()">
-    <h2>Nota para cálcular se você passou, vai de final, ou não.</h2>
-  <input type="number" [(ngModel)]="nota1" name="nota1" placeholder="Nota da 1ª prova">
-  <input type="number" [(ngModel)]="nota2" name="nota2" placeholder="Nota da 2ª prova">
-  <input type="number" [(ngModel)]="nota3" name="nota3" placeholder="Nota da 3ª prova">
-
-  <button type="submit">Calcular</button>
-  <p>{{ resultado }}</p>
-</form>
-
+    </div>
   </mat-sidenav-content>
   
 </mat-sidenav-container>

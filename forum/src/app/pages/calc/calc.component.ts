@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 @Component({
     selector: 'app-calc',
     templateUrl: './calc.component.html',
@@ -28,11 +29,13 @@ export class CalcComponent implements OnInit {
   rawFrases: string[] = [
     '<strong>Calculadora de Notas!</strong>'
   ];
-    constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient) { }
+    constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient, private userService: UserService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
     opened: boolean = true;
+    username1: string = 'Não logado';
+  isLogged: boolean = false;
     ngOnInit() {
         this.digitarFrase();
         setTimeout(() => {
@@ -41,6 +44,11 @@ export class CalcComponent implements OnInit {
                 this.showButton = false;
             }, 6000);
         }, 6000);
+          this.isLogged = this.userService.isLoggedIn();
+      const name = this.userService.getUsername();
+    if (name) {
+      this.username1 = name;
+    }
     }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -115,4 +123,13 @@ export class CalcComponent implements OnInit {
 abrirSite(url: string): void {
   window.open(url, "_blank");
 }
+  IrParaLogin() {
+    this.router.navigate(['/login']);
+  }
+    logout() {
+    this.userService.logout();
+    this.username1 = 'Não Logado';
+    this.isLogged = false;
+    window.location.reload();
+  }
 }

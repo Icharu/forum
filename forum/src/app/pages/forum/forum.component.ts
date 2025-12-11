@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { UserService } from '../../services/user.service';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -21,11 +22,14 @@ export class ForumComponent implements OnInit {
   rawFrases: string[] = [
     '<strong>Bem vindo ao Fórum</strong>'
   ];
+  username1: string = 'Não logado';
+  isLogged: boolean = false;
    @ViewChild('carouselRef') carousel!: ElementRef;
-    constructor(private router: Router, private sanitizer: DomSanitizer) { }
+    constructor(private router: Router, private sanitizer: DomSanitizer, private userService: UserService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
+    isAdmin: boolean = false;
     opened: boolean = true;
     ngOnInit() {
     this.digitarFrase();
@@ -36,7 +40,15 @@ export class ForumComponent implements OnInit {
   }, 6000);
 
 }, 6000);
-}
+  this.isLogged = this.userService.isLoggedIn();
+      const name = this.userService.getUsername();
+    if (name) {
+      this.username1 = name;
+    }
+
+    this.isAdmin = this.userService.getIsAdmin();
+  }
+
     VoltarHome() {
         this.router.navigate(['/']);
     }
@@ -87,4 +99,16 @@ export class ForumComponent implements OnInit {
   abrirSite(url: string): void {
   window.open(url, "_blank");
 }
+  IrParaLogin() {
+    this.router.navigate(['/login']);
+  }
+  logout() {
+    this.userService.logout();
+    this.username1 = 'Não Logado';
+    this.isLogged = false;
+    window.location.reload();
+  }
+  IrParaAdmin() {
+    this.router.navigate(['/admin'])
+  }
 }

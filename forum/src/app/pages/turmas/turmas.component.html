@@ -34,10 +34,12 @@
       </button>
       <span class="username">Fórum do Curso de EngComp</span>
       <span class="flex-spacer"></span>
-      <span class="username"></span>
-
-      <button mat-icon-button (click)="VoltarHome()">
-        <mat-icon>logout</mat-icon>
+      <span *ngIf="isLogged" class="username">{{ username1 }}</span>
+      <button *ngIf="isLogged" class="btn1" (click)="logout()">
+            Log-out
+      </button>
+        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
+            Login
       </button>
     </mat-toolbar>
     <div class="header">

@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 @Component({
     selector: 'app-creditos',
     templateUrl: './creditos.component.html',
@@ -21,11 +22,13 @@ export class CreditosComponent implements OnInit {
     rawFrases: string[] = [
         '<strong>Criador do Site</strong>'
         ];
-    constructor(private router: Router, private sanitizer: DomSanitizer) { }
+    constructor(private router: Router, private sanitizer: DomSanitizer, private userService: UserService) { }
     opened: boolean = true;
         textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
+    username1: string = 'Não logado';
+  isLogged: boolean = false;
     ngOnInit() {
         this.digitarFrase();
         setTimeout(() => {
@@ -34,6 +37,11 @@ export class CreditosComponent implements OnInit {
                 this.showButton = false;
             }, 6000);
         }, 6000);
+          this.isLogged = this.userService.isLoggedIn();
+      const name = this.userService.getUsername();
+    if (name) {
+      this.username1 = name;
+    }
     }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -80,4 +88,13 @@ export class CreditosComponent implements OnInit {
     IrParaVida() {
         this.router.navigate(['/vida']);
     }
+      IrParaLogin() {
+    this.router.navigate(['/login']);
+  }
+    logout() {
+    this.userService.logout();
+    this.username1 = 'Não Logado';
+    this.isLogged = false;
+    window.location.reload();
+  }
 }

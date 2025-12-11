@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 @Component({
     selector: 'app-curso',
     templateUrl: './curso.component.html',
@@ -23,10 +24,12 @@ export class CursoComponent implements OnInit {
     rawFrases: string[] = [
         '<strong>Estrutura Curricular</strong>'
         ];
-    constructor(private router: Router, private sanitizer: DomSanitizer, private http: HttpClient, private pdfService: PdfDownloadService) { }
+    constructor(private router: Router, private sanitizer: DomSanitizer, private http: HttpClient, private pdfService: PdfDownloadService, private userService: UserService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
+    username1: string = 'Não logado';
+  isLogged: boolean = false;
     opened: boolean = true;
     ngOnInit() {
       this.digitarFrase();
@@ -35,8 +38,12 @@ export class CursoComponent implements OnInit {
       setTimeout(() => {
         this.showButton = false;
       }, 6000);
-
     }, 6000);
+      this.isLogged = this.userService.isLoggedIn();
+      const name = this.userService.getUsername();
+    if (name) {
+      this.username1 = name;
+    }
 }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -113,4 +120,13 @@ export class CursoComponent implements OnInit {
     abrirSite(url: string): void {
   window.open(url, "_blank");
 }
+  IrParaLogin() {
+    this.router.navigate(['/login']);
+  }
+    logout() {
+    this.userService.logout();
+    this.username1 = 'Não Logado';
+    this.isLogged = false;
+    window.location.reload();
+  }
 }
