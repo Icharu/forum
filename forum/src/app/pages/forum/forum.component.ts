@@ -9,6 +9,9 @@ import { UserService } from '../../services/user.service';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NewsService } from '../../services/news.service';
+import { News } from '../../models/news.model';
+
 @Component({
     selector: 'app-forum',
     templateUrl: './forum.component.html',
@@ -23,9 +26,10 @@ export class ForumComponent implements OnInit {
     '<strong>Bem vindo ao Fórum</strong>'
   ];
   username1: string = 'Não logado';
+  newsList: News[] = [];
   isLogged: boolean = false;
    @ViewChild('carouselRef') carousel!: ElementRef;
-    constructor(private router: Router, private sanitizer: DomSanitizer, private userService: UserService) { }
+    constructor(private router: Router, private sanitizer: DomSanitizer, private userService: UserService, private newsService: NewsService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
@@ -47,6 +51,7 @@ export class ForumComponent implements OnInit {
     }
 
     this.isAdmin = this.userService.getIsAdmin();
+    this.carregarNoticias();
   }
 
     VoltarHome() {
@@ -111,4 +116,17 @@ export class ForumComponent implements OnInit {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
+  carregarNoticias(): void {
+  this.newsService.listarTodas().subscribe({
+    next: (data) => {
+      this.newsList = data.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() -   // Sorting by `createdAt`
+          new Date(a.createdAt).getTime()
+      );
+    },
+    error: (err) => console.error('Erro ao carregar notícias', err)
+  });
+}
+
 }

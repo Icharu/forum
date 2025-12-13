@@ -1,0 +1,114 @@
+<div *ngIf="showButton" class="img">
+  <img src="/img/welcome.png" class="img2" alt="yknow">
+  <div>
+    <h2>Está curtindo o site?</h2>
+    <p>
+      Se quiser sugerir alguma coisa, contate o dev!
+    </p>
+  </div>
+</div>
+<mat-sidenav-container class="sidenav-container">
+  <!-- SideNav -->
+  <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
+    <mat-nav-list>
+      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
+      <a mat-list-item (click)="IrParaVida()" class="white"><mat-icon>school</mat-icon> Vida no Curso</a>
+      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Estrutura Curricular</a>
+      <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
+      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
+      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
+      <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
+    </mat-nav-list>
+        <div class="updates">
+      <h2 class="updates2"><mat-icon>update</mat-icon> Atualizações:</h2>
+      <p class="updates2">-> Mudança de design
+        <br>-> Adicionado Update Log.
+      </p>
+        <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
+        <button class="btn1" (click)="abrirSite('https://github.com/Icharu/forum')">Fórum</button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="username">Fórum do Curso de EngComp</span>
+      <span class="flex-spacer"></span>
+            <span *ngIf="isLogged" class="username">{{ username1 }}</span>
+      <button *ngIf="isLogged" class="btn1" (click)="logout()">
+            Log-out
+      </button>
+        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
+            Login
+      </button>
+    </mat-toolbar>
+    <div class="header">
+      <div class="Bemvindo">
+              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
+              </div>
+        <img src="/img/something.png" class="gif" alt="yknow">
+      </div>
+
+<form #newsForm="ngForm" (ngSubmit)="salvarNews()" class="news-form">
+
+  <!-- TITLE -->
+  <div class="form-group">
+    <label for="title">Título</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="title"
+      required
+      placeholder="Título da notícia"
+    />
+  </div>
+
+  <!-- IMAGE URL -->
+  <div class="form-group">
+    <label for="imageUrl">Imagem (URL)</label>
+    <input
+      type="text"
+      id="imageUrl"
+      name="imageUrl"
+      [(ngModel)]="imageUrl"
+      required
+      placeholder="https://example.com/image.png"
+      class="form-control"
+    />
+  </div>
+
+  <!-- IMAGE PREVIEW (optional but recommended) -->
+  <div *ngIf="imageUrl" class="image-preview">
+    <img [src]="imageUrl" alt="Preview da imagem" />
+  </div>
+
+  <!-- DESCRIPTION -->
+  <div class="form-group">
+    <label for="descr">Descrição</label>
+    <textarea
+      id="descr"
+      name="descr"
+      [(ngModel)]="descr"
+      required
+      placeholder="Descrição da notícia"
+    ></textarea>
+  </div>
+
+  <!-- SUBMIT -->
+  <button
+    type="submit"
+    [disabled]="newsForm.invalid"
+    class="submit-btn"
+  >
+    Publicar notícia
+  </button>
+
+</form>
+
+
+    </div>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>

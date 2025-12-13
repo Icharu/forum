@@ -40,6 +40,7 @@ export class RegisterComponent implements OnInit {
   rawFrases: string[] = [
     '<strong>Bem vindo ao Fórum</strong>'
   ];
+  isAdmin: boolean = false;
     textoDigitado: SafeHtml = '';
     username1: string = 'Não logado';
   isLogged: boolean = false;
@@ -60,6 +61,7 @@ export class RegisterComponent implements OnInit {
     if (name) {
       this.username1 = name;
     }
+    this.isAdmin = this.userService.getIsAdmin();
 }
       VoltarHome() {
         this.router.navigate(['/']);
@@ -161,5 +163,8 @@ export class RegisterComponent implements OnInit {
     this.username1 = 'Não Logado';
     this.isLogged = false;
     window.location.reload();
+  }
+  IrParaAdmin() {
+    this.router.navigate(['/admin'])
   }
 }

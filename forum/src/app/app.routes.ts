@@ -10,6 +10,7 @@ import { VidaComponent } from './pages/vida/vida.component';
 import { CalcComponent } from './pages/calc/calc.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { AdminComponent } from './pages/admin/admin.component';
 export const routes: Routes = [
     { 
     path: '', 
@@ -58,7 +59,7 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
-        component: RegisterComponent,
+        component: AdminComponent,
         canActivate: [AuthGuard]
     },
     { 

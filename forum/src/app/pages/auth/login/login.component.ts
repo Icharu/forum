@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
+    isAdmin: boolean = false;
     username1: string = 'Não logado';
   isLogged: boolean = false;
     opened: boolean = true;
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
     if (name) {
       this.username1 = name;
     }
+    this.isAdmin = this.userService.getIsAdmin();
 }
     submit() {
     if (this.loginForm.invalid) {
@@ -158,5 +160,8 @@ export class LoginComponent implements OnInit {
     this.username1 = 'Não Logado';
     this.isLogged = false;
     window.location.reload();
+  }
+  IrParaAdmin() {
+    this.router.navigate(['/admin'])
   }
 }

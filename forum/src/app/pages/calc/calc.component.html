@@ -17,6 +17,7 @@
       <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
       <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
       <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
+      <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
     </mat-nav-list>
         <div class="updates">
       <h2 class="updates2"><mat-icon>update</mat-icon> Atualizações:</h2>

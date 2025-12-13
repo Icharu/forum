@@ -24,6 +24,7 @@ export class CreditosComponent implements OnInit {
         ];
     constructor(private router: Router, private sanitizer: DomSanitizer, private userService: UserService) { }
     opened: boolean = true;
+    isAdmin: boolean = false;
         textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     indiceLetra = 0;
@@ -42,6 +43,7 @@ export class CreditosComponent implements OnInit {
     if (name) {
       this.username1 = name;
     }
+    this.isAdmin = this.userService.getIsAdmin();
     }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -96,5 +98,8 @@ export class CreditosComponent implements OnInit {
     this.username1 = 'Não Logado';
     this.isLogged = false;
     window.location.reload();
+  }
+  IrParaAdmin() {
+    this.router.navigate(['/admin'])
   }
 }

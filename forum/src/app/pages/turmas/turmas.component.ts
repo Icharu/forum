@@ -29,6 +29,7 @@ export class TurmasComponent implements OnInit {
     constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient, private userService: UserService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
+    isAdmin: boolean = false;
     indiceLetra = 0;
     opened: boolean = true;
     ngOnInit() {
@@ -45,6 +46,7 @@ export class TurmasComponent implements OnInit {
     if (name) {
       this.username1 = name;
     }
+    this.isAdmin = this.userService.getIsAdmin();
 }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -102,5 +104,8 @@ abrirSite(url: string): void {
     this.username1 = 'Não Logado';
     this.isLogged = false;
     window.location.reload();
+  }
+  IrParaAdmin() {
+    this.router.navigate(['/admin'])
   }
 }

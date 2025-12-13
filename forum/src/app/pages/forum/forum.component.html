@@ -66,26 +66,23 @@
 
       <div class="grid-container" #carouselRef>
         
-        <div class="book-card">
+       <div class="book-card" *ngFor="let news of newsList">
           <div class="book-image">
-            <img src="/gof/icarus.gif" alt="Introdução ao Curso">
+            <img [src]="news.imgurl" [alt]="news.title">
           </div>
+
           <div class="book-content">
-            <h3>Criação desta Plataforma</h3>
-            <p>06/12/2025</p>
+            <h3>{{ news.title }}</h3>
+
+            <p class="date">
+              {{ news.createdAt | date:'dd/MM/yyyy HH:mm' }}
+            </p>
+
+            <p class="description">
+              {{ news.descr }}
+            </p>
           </div>
         </div>
-
-        <div class="book-card">
-          <div class="book-image">
-            <img src="/img/ERCEMAPI.png" alt="Bisseção">
-          </div>
-          <div class="book-content">
-            <h3>XIII Escola Regional de Computação do Ceará, Maranhão e Piauí (ERCEMAPI 2025)</h3>
-            <p>04/12/2025-05/12/2025</p>
-          </div>
-        </div>
-
       </div>
 
       <button class="carousel-btn next" (click)="scrollCarousel(1)">&#10095;</button>
