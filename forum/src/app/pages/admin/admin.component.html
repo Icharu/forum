@@ -119,6 +119,53 @@
 
 
     </div>
+    
+    <section class="know-more3" id="know-more3">
+  <div class="text">
+    <h2>Notícias recentes</h2>
+    <p>Será sempre gravado do mais novo até o mais antigo</p>
+
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" (click)="scrollCarousel(-1)">&#10094;</button>
+
+      <div class="grid-container" #carouselRef>
+        
+       <div class="book-card" *ngFor="let news of newsList">
+  <div class="book-image">
+    <img [src]="news.imgurl" [alt]="news.title">
+  </div>
+
+  <div class="book-content">
+    <ng-container *ngIf="editingId !== news.id; else editMode">
+      <h3>{{ news.title }}</h3>
+
+      <p class="date">{{ news.data }}</p>
+      <p class="description">{{ news.descr }}</p>
+
+      <div *ngIf="isAdmin" class="admin-actions">
+        <button class="btn-edit" (click)="editar(news)">Editar</button>
+        <button class="btn-delete" (click)="confirmarDelete(news.id!)">Excluir</button>
+      </div>
+    </ng-container>
+    <ng-template #editMode>
+      <input [(ngModel)]="newsEdit.title" placeholder="Título" />
+      <input [(ngModel)]="newsEdit.imgurl" placeholder="Imagem URL" />
+      <input [(ngModel)]="newsEdit.data" placeholder="Data" />
+      <textarea [(ngModel)]="newsEdit.descr" placeholder="Descrição"></textarea>
+
+      <div class="admin-actions">
+        <button class="btn-save" (click)="salvarEdicao(news.id!)">Salvar</button>
+        <button class="btn-cancel" (click)="cancelarEdicao()">Cancelar</button>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+</div>
+    </div>
+
+  </div>
+</section>
   </mat-sidenav-content>
   
 </mat-sidenav-container>

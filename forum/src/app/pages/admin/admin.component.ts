@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +28,8 @@ export class AdminComponent implements OnInit {
   rawFrases: string[] = [
     '<strong>Painel do Administrador</strong>'
   ];
+  
+  @ViewChild('carouselRef') carousel!: ElementRef;
     constructor(private router: Router, private sanitizer: DomSanitizer, private snackBar: MatSnackBar, private pdfDownloadService: PdfDownloadService, private http: HttpClient, private userService: UserService, private newsService: NewsService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
@@ -41,6 +43,8 @@ export class AdminComponent implements OnInit {
     newsList: News[] = [];
     indiceLetra = 0;
     opened: boolean = true;
+    editingId: number | null = null;
+    newsEdit!: News;
     username1: string = 'Não logado';
   isLogged: boolean = false;
     ngOnInit() {
@@ -57,6 +61,7 @@ export class AdminComponent implements OnInit {
       this.username1 = name;
     }
     this.isAdmin = this.userService.getIsAdmin();
+    this.carregarNoticias();
     }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -154,5 +159,39 @@ abrirSite(url: string): void {
     }
   });
 }
+carregarNoticias(): void {
+  this.newsService.listarTodas().subscribe({
+    next: (data) => {
+      this.newsList = data;
+    },
+    error: (err) => console.error('Erro ao carregar notícias', err)
+  });
+}
+scrollCarousel(direction: number) {
+    const container = this.carousel.nativeElement;
+    const cardWidth = container.querySelector('.book-card').offsetWidth + 20;
+    container.scrollLeft += direction * cardWidth;
+  }
+   editar(news: News) {
+    this.editingId = news.id ?? null;
+    this.newsEdit = { ...news }; // clone
+  }
 
+  salvarEdicao(id: number) {
+    this.newsService.atualizar(id, this.newsEdit).subscribe(() => {
+      this.carregarNoticias();
+      this.cancelarEdicao();
+    });
+  }
+
+  cancelarEdicao() {
+    this.editingId = null;
+  }
+  confirmarDelete(id: number) {
+    if (confirm('Tem certeza que deseja excluir esta notícia?')) {
+      this.newsService.deletar(id).subscribe(() => {
+        this.newsList = this.newsList.filter(n => n.id !== id);
+      });
+    }
+  }
 }
