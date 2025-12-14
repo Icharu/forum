@@ -9,7 +9,7 @@ import { News } from '../models/news.model';
   providedIn: 'root'
 })
 export class NewsService {
-  private readonly API_URL = 'https://forumback-rfio.onrender.com/news'; 
+  private readonly API_URL = 'https://forumback-ha4q.onrender.com/news'; 
 
   constructor(private http: HttpClient) {}
 

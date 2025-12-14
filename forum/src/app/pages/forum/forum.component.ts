@@ -116,17 +116,14 @@ export class ForumComponent implements OnInit {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
-  carregarNoticias(): void {
+carregarNoticias(): void {
   this.newsService.listarTodas().subscribe({
     next: (data) => {
-      this.newsList = data.sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() -   // Sorting by `createdAt`
-          new Date(a.createdAt).getTime()
-      );
+      this.newsList = data;
     },
     error: (err) => console.error('Erro ao carregar notícias', err)
   });
 }
+
 
 }

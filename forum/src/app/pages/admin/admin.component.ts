@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit {
     imageUrl: string = '';
     title: string = '';
     descr: string = '';
+    datatime: string = '';
 
     
     isAdmin: boolean = false;
@@ -131,7 +132,7 @@ abrirSite(url: string): void {
       title: this.title,
       descr: this.descr,
       imgurl: this.imageUrl,
-      createdAt: ''
+      data: this.datatime
   };
 
   this.newsService.criar(news).subscribe({

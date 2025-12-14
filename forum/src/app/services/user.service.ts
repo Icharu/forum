@@ -17,7 +17,7 @@ interface LoginRequest {
   providedIn: 'root'
 })
 export class UserService {
-    private apiUrl = 'https://forumback-rfio.onrender.com/auth';
+    private apiUrl = 'https://forumback-ha4q.onrender.com/auth';
 
     constructor(private httpClient: HttpClient) {}
 

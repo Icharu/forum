@@ -5,5 +5,5 @@ export interface News {
   title: string;
   imgurl: string;
   descr: string;
-  createdAt: string;
+  data: string;
 }

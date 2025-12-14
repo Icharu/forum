@@ -84,6 +84,16 @@
     <img [src]="imageUrl" alt="Preview da imagem" />
   </div>
 
+   <div class="form-group">
+    <label for="datatime">Data</label>
+    <textarea
+      id="datatime"
+      name="datatime"
+      [(ngModel)]="datatime"
+      required
+      placeholder="Dia da notícia"
+    ></textarea>
+  </div>
   <!-- DESCRIPTION -->
   <div class="form-group">
     <label for="descr">Descrição</label>
