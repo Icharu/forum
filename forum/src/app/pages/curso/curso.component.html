@@ -161,6 +161,324 @@
     </div>
   </div>
 </section>
+<div class="flowchart-container">
+        
+        <div class="period-col">
+            <div class="period-header">1º Período</div>
+            
+            <div class="course-card" id="leitura">
+                <div class="course-title">Leitura e Produção Textual</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="mat-discreta">
+                <div class="course-title">Matemática Discreta</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="calc1">
+                <div class="course-title">Cálculo Diferencial e Integral de uma Variável</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="algoritmos">
+                <div class="course-title">Algoritmos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="gaal">
+                <div class="course-title">Geometria Analítica e Álgebra Linear</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="quimica">
+                <div class="course-title">Química Geral</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">2º Período</div>
+
+            <div class="course-card" id="metodologia">
+                <div class="course-title">Metodologia Científica</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="fisica1" data-prereq="calc1">
+                <div class="course-title">Fundamentos de Mecânica, Calor e Ondas</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="economia">
+                <div class="course-title">Economia e Responsabilidade Socioambiental</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="calc2" data-prereq="calc1">
+                <div class="course-title">Cálculo Diferencial e Integral de Várias Variáveis</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="lp" data-prereq="algoritmos">
+                <div class="course-title">Linguagem de Programação</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="expr-grafica" data-prereq="gaal">
+                <div class="course-title">Expressão Gráfica</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">3º Período</div>
+
+            <div class="course-card" id="mec-solidos" data-prereq="fisica1">
+                <div class="course-title">Mecânica dos Sólidos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="fisica3" data-prereq="fisica1">
+                <div class="course-title">Fundamentos de Eletricidade, Magnetismo e Óptica</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="estatistica" data-prereq="calc1">
+                <div class="course-title">Estatística e Métodos Estocásticos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="calc-num" data-prereq="calc2,lp">
+                <div class="course-title">Cálculo Numérico</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="eq-dif" data-prereq="calc2">
+                <div class="course-title">Equações Diferenciais e Aplicações</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="ed1" data-prereq="lp">
+                <div class="course-title">Estrutura de Dados Básica</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">4º Período</div>
+
+            <div class="course-card" id="cienc-mat" data-prereq="quimica">
+                <div class="course-title">Ciência e Tecnologia dos Materiais</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="fen-transp" data-prereq="mec-solidos">
+                <div class="course-title">Fenômenos de Transportes</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="fis-mod" data-prereq="fisica3">
+                <div class="course-title">Fundamentos de Física Moderna</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="circ-elet" data-prereq="fisica3,eq-dif">
+                <div class="course-title">Circuitos Elétricos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="calc-num-adv" data-prereq="calc-num">
+                <div class="course-title">Cálculo Numérico Avançado</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="var-comp" data-prereq="calc2">
+                <div class="course-title">Variáveis Complexas</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="ed2" data-prereq="ed1">
+                <div class="course-title">Estrutura de Dados Avançada</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">5º Período</div>
+
+              <div class="course-card" id="arq-comp" data-prereq="lp">
+                <div class="course-title">Arquitetura e Organização de Computadores</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="redes1" data-prereq="arq-comp">
+                <div class="course-title">Redes de Computadores Básica</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="elet-ana" data-prereq="circ-elet">
+                <div class="course-title">Eletrônica Analógica</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="elet-dig" data-prereq="circ-elet">
+                <div class="course-title">Eletrônica Digital</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="sinais" data-prereq="var-comp,circ-elet">
+                <div class="course-title">Análise e Processamento de Sinais</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="bd" data-prereq="ed2">
+                <div class="course-title">Banco de Dados</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="poo" data-prereq="ed1">
+                <div class="course-title">Programação Orientada a Objetos</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">6º Período</div>
+
+            <div class="course-card" id="redes2" data-prereq="redes1">
+                <div class="course-title">Redes de Computadores Avançada</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="eng-eletromag" data-prereq="fisica3,calc2">
+                <div class="course-title">Engenharia Eletromagnética</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="micro" data-prereq="elet-dig,arq-comp">
+                <div class="course-title">Microprocessadores e Microcontroladores</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="controle-class" data-prereq="sinais">
+                <div class="course-title">Controle Clássico</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="princ-com" data-prereq="sinais">
+                <div class="course-title">Princípios de Comunicações</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="eng-soft" data-prereq="poo,bd">
+                <div class="course-title">Engenharia de Software</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="so" data-prereq="arq-comp">
+                <div class="course-title">Sistemas Operacionais</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">7º Período</div>
+
+            <div class="course-card" id="cinematica" data-prereq="mec-solidos">
+                <div class="course-title">Cinemática dos Mecanismos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="teoria-comp" data-prereq="lp">
+                <div class="course-title">Teoria da Computação e Compiladores</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="comp-graf" data-prereq="gaal,poo">
+                <div class="course-title">Computação Gráfica</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="sist-embarc" data-prereq="micro">
+                <div class="course-title">Sistemas Embarcados</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="com-dig" data-prereq="princ-com">
+                <div class="course-title">Comunicações Digitais</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="ia" data-prereq="algoritmos,estatistica">
+                <div class="course-title">Inteligência Artificial</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="analise-proj" data-prereq="eng-soft">
+                <div class="course-title">Análise e Projeto de Sistemas</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">8º Período</div>
+
+            <div class="course-card" id="infra-cab" data-prereq="redes1,elet-ana">
+                <div class="course-title">Infraestrutura de Cabeamento Elétrico e Lógico</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="gestao-proj" data-prereq="economia">
+                <div class="course-title">Gestão de Projetos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="instrum-elet" data-prereq="elet-ana">
+                <div class="course-title">Instrumentação Eletrônica</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="automacao" data-prereq="controle-class,micro">
+                <div class="course-title">Automação Industrial</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="redes-opt" data-prereq="eng-eletromag,com-dig">
+                <div class="course-title">Redes de Comunicações Ópticas</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="sist-intel" data-prereq="ia">
+                <div class="course-title">Sistemas Inteligentes</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="visao-comp" data-prereq="comp-graf,ia">
+                <div class="course-title">Visão Computacional</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card special" id="libras">
+                <div class="course-title">Libras</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">9º Período</div>
+
+            <div class="course-card" id="proj-tcc">
+                <div class="course-title">Projeto de Trabalho de Conclusão de Curso</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="estagio1">
+                <div class="course-title">Estágio I</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="com-movel" data-prereq="com-dig">
+                <div class="course-title">Sistemas de Comunicação Móvel e de Rádio Acesso</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card special" id="opt1">
+                <div class="course-title">Optativa I</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card special" id="opt2">
+                <div class="course-title">Optativa II</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+        <div class="period-col">
+            <div class="period-header">10º Período</div>
+
+            <div class="course-card" id="tcc" data-prereq="proj-tcc">
+                <div class="course-title">Trabalho de Conclusão de Curso</div>
+                <div class="course-hours">0</div>
+            </div>
+            <div class="course-card" id="estagio2" data-prereq="estagio1">
+                <div class="course-title">Estágio II</div>
+                <div class="course-hours">90</div>
+            </div>
+            <div class="course-card" id="ativ-comp">
+                <div class="course-title">Atividade Complementar</div>
+                <div class="course-hours">45</div>
+            </div>
+            <div class="course-card" id="controle-mod" data-prereq="controle-class">
+                <div class="course-title">Controle Moderno</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="sist-dist" data-prereq="redes2,so">
+                <div class="course-title">Sistemas Distribuídos</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="robotica" data-prereq="cinematica,ia">
+                <div class="course-title">Robótica</div>
+                <div class="course-hours">60</div>
+            </div>
+            <div class="course-card" id="top-emerg">
+                <div class="course-title">Tópicos Emergentes</div>
+                <div class="course-hours">60</div>
+            </div>
+        </div>
+
+    </div>
+
     </div>
   </mat-sidenav-content>
   

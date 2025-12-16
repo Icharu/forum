@@ -8,3 +8,13 @@
         background: #2B3C50 !important;
         color: white !important;
   }
+  :root {
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-main: #2B3C50;
+            --text-sub: #666666;
+            --border-color: #d1d1d1;
+            --header-bg: #e0e0e0;
+            --shadow: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-hover: 0 4px 8px rgba(0,0,0,0.1);
+        }

@@ -281,3 +281,93 @@ mat-icon {
 .likes {
   padding: 10px;
 }
+
+
+.flowchart-container {
+            display: grid;
+            grid-template-columns: repeat(10, minmax(200px, 1fr));
+            gap: 15px;
+            overflow-x: auto; /* Allows horizontal scrolling */
+            padding-bottom: 20px;
+        }
+
+        /* Column Styling */
+        .period-col {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-width: 200px;
+        }
+
+        /* Header for each Period */
+        .period-header {
+            background-color: var(--text-main);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* Course Card Styling */
+        .course-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 80px;
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: #999;
+        }
+
+        /* Specific visual distinction for optatives/special classes */
+        .course-card.special {
+            background-color: #eaeaea;
+        }
+
+        /* Course Title */
+        .course-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        /* Hours/Credits Badge */
+        .course-hours {
+            align-self: flex-end;
+            background-color: var(--header-bg);
+            color: var(--text-main);
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .flowchart-container::-webkit-scrollbar {
+            height: 10px;
+        }
+        .flowchart-container::-webkit-scrollbar-track {
+            background: #e0e0e0; 
+        }
+        .flowchart-container::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 5px;
+        }
+        .flowchart-container::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
