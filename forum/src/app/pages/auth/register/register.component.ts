@@ -167,4 +167,7 @@ export class RegisterComponent implements OnInit {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
+  IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 }

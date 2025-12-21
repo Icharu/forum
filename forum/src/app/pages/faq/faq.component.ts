@@ -110,4 +110,7 @@ export class FaqsComponent implements OnInit {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
+  IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 }

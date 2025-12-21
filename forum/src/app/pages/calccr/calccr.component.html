@@ -1,6 +1,6 @@
 <div *ngIf="showButton" class="img">
   <img src="/img/welcome.png" class="img2" alt="yknow">
-  <div class="likes">
+  <div>
     <h2>Está curtindo o site?</h2>
     <p>
       Se quiser sugerir alguma coisa, contate o dev!
@@ -21,8 +21,8 @@
       <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
     </mat-nav-list>
         <div class="updates">
-      <h2><mat-icon>update</mat-icon> Atualizações:</h2>
-      <p>-> Adicionado fluxograma dos cursos
+      <h2 class="updates2"><mat-icon>update</mat-icon> Atualizações:</h2>
+      <p class="updates2">-> Adicionado fluxograma dos cursos
         <br>-> Adicionado CRUD para notícias
         <br>-> Adicionado Simulador de CR
       </p>
@@ -37,48 +37,61 @@
       </button>
       <span class="username">Fórum do Curso de EngComp</span>
       <span class="flex-spacer"></span>
-      <span *ngIf="isLogged" class="username">{{ username1 }}</span>
+            <span *ngIf="isLogged" class="username">{{ username1 }}</span>
       <button *ngIf="isLogged" class="btn1" (click)="logout()">
             Log-out
       </button>
+        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
+            Login
+      </button>
     </mat-toolbar>
-          <div class="Bemvindo">
+    <div class="header">
+      <div class="Bemvindo">
               <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
               </div>
+        <img src="/img/something.png" class="gif" alt="yknow">
       </div>
-    <div class="header">
-      <h2>Login</h2>
-      <p>Quer participar da comunidade realmente? Postando e fazendo perguntas? Crie sua conta e entre conosco!</p>
-  <div class="text">
-    <form [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div class="shell">
-      <div class="form-group">
-        <label for="username">Usuário</label>
-        <input id="username" type="text" formControlName="username" placeholder="Digite seu nome de usuário">
-        <small *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-          O nome de usuário é obrigatório.
-        </small>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Senha</label>
-        <input id="password" type="password" formControlName="password" placeholder="Digite sua senha">
-        <small *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-          A senha é obrigatória.
-        </small>
-      </div>
-      <div class="form-group">
-      <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
-
-      <p class="register-text">
-        Não tem conta?
-        <a (click)="navigate()">Crie uma agora</a>
-      </p>
-      </div>
-      </div>
-    </form>
+      <p>Só por que está aqui não quer dizer que não passou.</p>
     </div>
-    </div>
+<form>
+  <div class="simul">
+    <h2>Simulador de CR</h2>
+
+    <input
+      type="text"
+      placeholder="Matéria"
+      name="nome"
+      [(ngModel)]="novaMateria.nome"
+    >
+
+    <input
+      type="number"
+      placeholder="Créditos"
+      name="creditos"
+      [(ngModel)]="novaMateria.creditos"
+    >
+
+    <input
+      type="number"
+      placeholder="Média"
+      name="media"
+      [(ngModel)]="novaMateria.media"
+    >
+
+    <button type="button" (click)="adicionarMateria()">
+      Adicionar
+    </button>
+
+    <hr>
+
+    <p *ngFor="let m of materias">
+      {{ m.nome }} — Média: {{ m.media }} — Créditos: {{ m.creditos }}
+    </p>
+
+    <h3>CR Atual: {{ calcularCR() | number:'1.2-2' }}</h3>
+  </div>
+</form>
+
   </mat-sidenav-content>
   
 </mat-sidenav-container>

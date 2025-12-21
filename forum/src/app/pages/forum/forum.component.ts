@@ -124,6 +124,8 @@ carregarNoticias(): void {
     error: (err) => console.error('Erro ao carregar notícias', err)
   });
 }
-
+IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 
 }

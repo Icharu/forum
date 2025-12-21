@@ -134,4 +134,7 @@ export class CursoComponent implements OnInit {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
+  IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 }

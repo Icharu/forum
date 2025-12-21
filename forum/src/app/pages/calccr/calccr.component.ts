@@ -7,46 +7,59 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { HttpClient } from '@angular/common/http';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
+import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { Materia } from '../../models/cr.model';
 @Component({
-    selector: 'app-vida',
-    templateUrl: './vida.component.html',
-    styleUrls: ['./vida.component.css'],
+    selector: 'app-calccr',
+    templateUrl: './calccr.component.html',
+    styleUrls: ['./calccr.component.css'],
     standalone: true,
-    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, CommonModule]
+    imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, FormsModule, CommonModule]
 })
-export class VidaComponent implements OnInit {
-          frases: SafeHtml[] = [];
-          showButton = false;
+export class CalcCRComponent implements OnInit {
+        frases: SafeHtml[] = [];
+        resultado: string = "";
+        nota1: number = 0;
+        nota2: number = 0;
+        nota3: number = 0;
+        showButton = false;
   rawFrases: string[] = [
-    '<strong>Vida no Curso</strong>'
+    '<strong>Simulador de CR, Rendimento Acadêmico</strong>'
   ];
     constructor(private router: Router, private sanitizer: DomSanitizer, private pdfDownloadService: PdfDownloadService, private http: HttpClient, private userService: UserService) { }
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
-    isAdmin: boolean = false;
     indiceLetra = 0;
+     materias: Materia[] = [];
+
+  novaMateria: Materia = {
+    nome: '',
+    creditos: 0,
+    media: 0
+  };
+    isAdmin: boolean = false;
+    opened: boolean = true;
     username1: string = 'Não logado';
   isLogged: boolean = false;
-    opened: boolean = true;
     ngOnInit() {
-      this.digitarFrase();
-      setTimeout(() => {
-      this.showButton = true;
-      setTimeout(() => {
-        this.showButton = false;
-      }, 6000);
-    }, 6000);
-      this.isLogged = this.userService.isLoggedIn();
+        this.digitarFrase();
+        setTimeout(() => {
+            this.showButton = true;
+            setTimeout(() => {
+                this.showButton = false;
+            }, 6000);
+        }, 6000);
+          this.isLogged = this.userService.isLoggedIn();
       const name = this.userService.getUsername();
     if (name) {
       this.username1 = name;
     }
     this.isAdmin = this.userService.getIsAdmin();
-}
+    }
     VoltarHome() {
         this.router.navigate(['/']);
     }
@@ -65,8 +78,11 @@ export class VidaComponent implements OnInit {
     IrParaVida() {
         this.router.navigate(['/vida']);
     }
-      IrParaLogin() {
-    this.router.navigate(['/login']);
+    adicionarMateria() {
+    if (this.novaMateria.creditos > 0) {
+      this.materias.push({ ...this.novaMateria });
+      this.novaMateria = { nome: '', creditos: 0, media: 0 };
+    }
   }
         digitarFrase() {
     const fraseAtual = this.rawFrases[this.indiceFrase];
@@ -92,13 +108,52 @@ export class VidaComponent implements OnInit {
   download() {
   this.pdfDownloadService.download('cursos/10.pdf', '10.pdf');
 }
+  calcularCR(): number {
+    let somaPesos = 0;
+    let somaCreditos = 0;
+
+    for (const materia of this.materias) {
+      somaPesos += materia.media * materia.creditos;
+      somaCreditos += materia.creditos;
+    }
+
+    return somaCreditos === 0 ? 0 : somaPesos / somaCreditos;
+  }
     IrParaTurmas() {
         this.router.navigate(['/turmas']);
     }
-    abrirSite(url: string): void {
+    calcular() {
+  const soma = this.nota1 + this.nota2 + this.nota3;
+  const media = (this.nota1 + this.nota2 + this.nota3)/3;
+  if (soma >= 21) {
+    this.resultado = `Parabéns, passou! Uhul 🎉 Média ${media}`;
+    return;
+  }
+  if (soma < 15) {
+    this.resultado = `Reprovado | Média = ${media} Depois você consegue!`;
+
+    const audio = new Audio("/audio/reprovado.mp3");
+    audio.play();
+
+    return;
+  }
+  if (soma >= 15) {
+    const media = soma / 3;
+    const notaNecessaria = 10 - media;
+
+    this.resultado = 
+      `Você foi para a final. Precisa tirar acima de ${notaNecessaria.toFixed(2)} para passar de final.`;
+
+    return;
+  }
+}
+abrirSite(url: string): void {
   window.open(url, "_blank");
 }
-  logout() {
+  IrParaLogin() {
+    this.router.navigate(['/login']);
+  }
+    logout() {
     this.userService.logout();
     this.username1 = 'Não Logado';
     this.isLogged = false;

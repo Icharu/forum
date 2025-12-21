@@ -11,6 +11,7 @@ import { CalcComponent } from './pages/calc/calc.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { CalcCRComponent } from './pages/calccr/calccr.component';
 export const routes: Routes = [
     { 
     path: '', 
@@ -61,6 +62,10 @@ export const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path: 'simulador',
+        component: CalcCRComponent
     },
     { 
         path: '**', 

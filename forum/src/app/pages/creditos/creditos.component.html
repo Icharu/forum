@@ -17,12 +17,14 @@
       <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
       <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
       <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
+      <a mat-list-item (click)="IrParaSimulador()" class="white"><mat-icon>grading</mat-icon> Simulador de CR</a>
       <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
     </mat-nav-list>
         <div class="updates">
       <h2><mat-icon>update</mat-icon> Atualizações:</h2>
       <p>-> Adicionado fluxograma dos cursos
         <br>-> Adicionado CRUD para notícias
+        <br>-> Adicionado Simulador de CR
       </p>
         <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
         <button class="btn1" (click)="abrirSite('https://github.com/Icharu/forum')">Fórum</button>

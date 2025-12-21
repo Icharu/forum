@@ -164,4 +164,7 @@ export class LoginComponent implements OnInit {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
+  IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 }

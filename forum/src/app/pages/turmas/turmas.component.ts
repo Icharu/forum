@@ -108,4 +108,7 @@ abrirSite(url: string): void {
   IrParaAdmin() {
     this.router.navigate(['/admin'])
   }
+  IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 }

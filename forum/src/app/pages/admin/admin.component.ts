@@ -194,4 +194,7 @@ scrollCarousel(direction: number) {
       });
     }
   }
+  IrParaSimulador() {
+    this.router.navigate(['/simulador'])
+  }
 }
