@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-    body {
-      font-family: "Poppins", sans-serif;
-    }
+    
+html, body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
     
     .custom-snackbar {
         background: #2B3C50 !important;
