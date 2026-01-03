@@ -13,11 +13,17 @@ interface LoginRequest {
     password: string;
 }
 
+export interface User {
+    id: number;
+    username: string;
+    isAdmin: boolean;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
     private apiUrl = 'https://forumback-ha4q.onrender.com/auth';
+    private usuariosUrl = 'https://forumback-ha4q.onrender.com/auth/listar';
 
     constructor(private httpClient: HttpClient) {}
 
@@ -48,6 +54,9 @@ export class UserService {
     responseType: 'text'
   });
 }
+  listarTodos(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.usuariosUrl);
+  }
 
 
     savetoken(token: string): void {

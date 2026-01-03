@@ -12,9 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { UserService } from '../../services/user.service';
+import { User, UserService } from '../../services/user.service';
 import { NewsService } from '../../services/news.service';
 import { News } from '../../models/news.model';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
     selector: 'app-calc',
     templateUrl: './admin.component.html',
@@ -34,9 +35,13 @@ export class AdminComponent implements OnInit {
     textoDigitado: SafeHtml = '';
     indiceFrase = 0;
     imageUrl: string = '';
+    dataSource: MatTableDataSource<User> = new MatTableDataSource<User>([]);
     title: string = '';
     descr: string = '';
     datatime: string = '';
+    isLoading: boolean = true; 
+     itensPorPagina: number = 5;
+    usuarios: User[] = []; 
 
     
     isAdmin: boolean = false;
@@ -62,6 +67,7 @@ export class AdminComponent implements OnInit {
     }
     this.isAdmin = this.userService.getIsAdmin();
     this.carregarNoticias();
+    this.carregarUsuarios();
     }
     VoltarHome() {
         this.router.navigate(['/']);
@@ -81,6 +87,19 @@ export class AdminComponent implements OnInit {
     IrParaVida() {
         this.router.navigate(['/vida']);
     }
+     carregarUsuarios(): void {
+    this.userService.listarTodos().subscribe({
+      next: (usuarios: User[]) => {
+        console.log('Dados recebidos da API:', usuarios);
+        this.dataSource.data = usuarios;
+        this.isLoading = false; 
+      },
+      error: (err) => {
+        console.error('Erro ao carregar usuários:', err);
+        this.isLoading = false;
+      }
+    });
+  }
         digitarFrase() {
     const fraseAtual = this.rawFrases[this.indiceFrase];
 

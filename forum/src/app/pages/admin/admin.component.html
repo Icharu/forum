@@ -168,6 +168,32 @@
 
   </div>
 </section>
+<section>
+  <h2>Lista de Usuários</h2>
+        <table class="mat-mdc-table"> 
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>E-mail</th>
+            <th>Administrador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of dataSource.filteredData">
+            <td>{{ usuario.id }}</td>    
+            <td>{{ usuario.username }}</td>   
+            <td>{{ usuario.isAdmin }}</td>    
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <span>Itens por página:</span>
+        <select [(ngModel)]="itensPorPagina">
+          <option *ngFor="let qtd of [5,10,20]" [value]="qtd">{{ qtd }}</option>
+        </select>
+        <span>{{ dataSource.data.length }} total</span>
+      </div>
+</section>
   </mat-sidenav-content>
   
 </mat-sidenav-container>

@@ -410,3 +410,77 @@ button {
   margin-bottom: 6px;
   padding: 6px;
 }
+
+.mat-mdc-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "Inter", "Roboto", sans-serif;
+}
+
+/* Table header */
+.mat-mdc-table thead {
+  background: #2B3C50;
+}
+
+.mat-mdc-table thead th {
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Table body */
+.mat-mdc-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.mat-mdc-table tbody tr:hover {
+  background-color: #f1f3f9;
+}
+
+.mat-mdc-table tbody td {
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #2c2c2c;
+  border-bottom: 1px solid #e6e8ef;
+}
+
+/* Last row without border */
+.mat-mdc-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Boolean admin column styling */
+.mat-mdc-table tbody td:last-child {
+  font-weight: 600;
+}
+
+/* Optional: highlight admins */
+.mat-mdc-table tbody td:last-child:contains("true") {
+  color: #2e7d32;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+  color: #555555; /* $text-color */
+  font-size: 0.9rem;
+}
+  span {
+    margin-left: 15px;
+  }
+
+  select {
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #f1f3f6; /* $gray-secondary-bg */
+  }
