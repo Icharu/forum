@@ -1,13 +1,19 @@
+mat-sidenav-list, mat-sidenav-container {
+  overflow: hidden;
+}
+
 .sidenav-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .sidenav {
   width: 240px;
   background: #fff;
   border-right: 1px solid #e0e0e0;
+  overflow: hidden;
 }
 .white {
   color: #333;
@@ -30,6 +36,7 @@ a {
   align-items: center;
   padding: 0 1rem;
   height: 64px;
+  overflow: hidden;
 }
 .updates {
   background: #2B3C50;
@@ -38,6 +45,7 @@ a {
   padding: 10px;
   font-size: 0.8rem;
   height: 51vh;
+  overflow: hidden;
 }
 .btn1 {
   padding: 10px;

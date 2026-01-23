@@ -13,17 +13,12 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CalcCRComponent } from './pages/calccr/calccr.component';
 export const routes: Routes = [
-    { 
-    path: '', 
-    redirectTo: '/home', 
-    pathMatch: 'full' 
-    },
     {
         path: 'home',
         component: HomeComponent
     },
     {
-        path: 'forum',
+        path: '',
         component: ForumComponent
     },
     {
@@ -66,9 +61,5 @@ export const routes: Routes = [
     {
         path: 'simulador',
         component: CalcCRComponent
-    },
-    { 
-        path: '**', 
-        redirectTo: 'home' 
-   }
+    }
 ];
