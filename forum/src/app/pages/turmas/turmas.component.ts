@@ -58,7 +58,7 @@ export class TurmasComponent implements OnInit {
         this.router.navigate(['/creditos']);
     }
     VoltarForum() {
-        this.router.navigate(['/forum']);
+        this.router.navigate(['/']);
     }
     IrParaFaqs() {
         this.router.navigate(['/faqs']);

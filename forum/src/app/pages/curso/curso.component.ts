@@ -48,7 +48,7 @@ export class CursoComponent implements OnInit {
     this.isAdmin = this.userService.getIsAdmin();
 }
     VoltarHome() {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
     }
     IrParaCurso() {
         this.router.navigate(['/curso']);
@@ -57,7 +57,7 @@ export class CursoComponent implements OnInit {
         this.router.navigate(['/creditos']);
     }
     VoltarForum() {
-        this.router.navigate(['/forum']);
+        this.router.navigate(['/']);
     }
     IrParaEngComp() {
         this.router.navigate(['/engcomp']);

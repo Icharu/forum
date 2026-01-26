@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/creditos']);
     }
     VoltarForum() {
-        this.router.navigate(['/forum']);
+        this.router.navigate(['/']);
     }
     IrParaTurmas() {
         this.router.navigate(['/turmas']);

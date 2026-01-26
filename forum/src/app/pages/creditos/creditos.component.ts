@@ -55,7 +55,7 @@ export class CreditosComponent implements OnInit {
         this.router.navigate(['/creditos']);
     }
     VoltarForum() {
-        this.router.navigate(['/forum']);
+        this.router.navigate(['/']);
     }
       abrirSite(url: string): void {
   window.open(url, "_blank");
