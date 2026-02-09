@@ -44,13 +44,11 @@ a {
 
 .content {
   flex: 1;
-  padding: 1.5rem;
   background: #f9f9f9;
 }
 .header {
     font-size: 1rem;
     font-weight: 600;
-    gap: 50px;
     animation: fadeSlideUp 0.7s ease-out forwards;
 }
 button {
@@ -201,6 +199,12 @@ button {
   display: flex;
   justify-content: center;
   animation: fadeSlideUp 0.7s ease-out forwards;
+}
+.h3 {
+  margin: 0;
+}
+.p2 {
+  margin-top: 0;
 }
 .likes {
   padding: 10px;
