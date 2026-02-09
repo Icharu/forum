@@ -12,6 +12,17 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CalcCRComponent } from './pages/calccr/calccr.component';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  template: '',
+  standalone: true
+})
+export class ExternalRedirectComponent implements OnInit {
+  ngOnInit() {
+    window.location.href = 'https://icarodejesus.com/404';
+  }
+}
 export const routes: Routes = [
     {
         path: 'home',
@@ -61,5 +72,9 @@ export const routes: Routes = [
     {
         path: 'simulador',
         component: CalcCRComponent
+    },
+    {
+        path: '**',
+        component: ExternalRedirectComponent
     }
 ];
