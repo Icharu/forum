@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ export class FaqsComponent implements OnInit {
   rawFrases: string[] = ["<strong>Perguntas Frequentes (FAQ's)</strong>"];
   textoDigitado: SafeHtml = '';
   indiceFrase = 0;
+  isMobile = false;
   indiceLetra = 0;
 
   constructor(
@@ -33,7 +34,7 @@ export class FaqsComponent implements OnInit {
 
   ngOnInit() {
     this.digitarFrase();
-
+    this.checkMobile();
     setTimeout(() => {
       this.showButton = true;
       setTimeout(() => {
@@ -84,4 +85,16 @@ export class FaqsComponent implements OnInit {
   IrParaCreditos()  { this.router.navigate(['/creditos']); }
   IrParaAdmin()     { this.router.navigate(['/admin']); }
   IrParaCalc()      { this.router.navigate(['/faqs/calc']); }
+
+  @HostListener('window:resize')
+checkMobile() {
+  const wasMobile = this.isMobile;
+  this.isMobile = window.innerWidth <= 768;
+  if (!wasMobile && this.isMobile) { this.sidebarOpen = false; }
+  else if (wasMobile && !this.isMobile) { this.sidebarOpen = true; }
+}
+
+closeSidebarOnMobile() {
+  if (this.isMobile) { this.sidebarOpen = false; }
+}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -23,6 +23,7 @@ export class VidaComponent implements OnInit {
   textoDigitado: SafeHtml = '';
   indiceFrase = 0;
   indiceLetra = 0;
+  isMobile = false;
 
   constructor(
     private router: Router,
@@ -34,7 +35,7 @@ export class VidaComponent implements OnInit {
   ngOnInit() {
     this.digitarFrase();
     this.isAdmin = this.userService.getIsAdmin();
-
+    this.checkMobile();
     setTimeout(() => {
       this.showButton = true;
       setTimeout(() => { this.showButton = false; }, 6000);
@@ -76,4 +77,16 @@ export class VidaComponent implements OnInit {
   IrParaSimulador() { this.router.navigate(['/simulador']); }
   IrParaCreditos()  { this.router.navigate(['/creditos']); }
   IrParaAdmin()     { this.router.navigate(['/admin']); }
+
+  @HostListener('window:resize')
+checkMobile() {
+  const wasMobile = this.isMobile;
+  this.isMobile = window.innerWidth <= 768;
+  if (!wasMobile && this.isMobile) { this.sidebarOpen = false; }
+  else if (wasMobile && !this.isMobile) { this.sidebarOpen = true; }
+}
+
+closeSidebarOnMobile() {
+  if (this.isMobile) { this.sidebarOpen = false; }
+}
 }

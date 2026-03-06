@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -16,18 +16,28 @@ export class TurmasComponent implements OnInit {
   sidebarOpen = true;
   showButton = false;
   isAdmin = false;
-
+  isMobile = false;
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {
     this.isAdmin = this.userService.getIsAdmin();
-
+    this.checkMobile();
     setTimeout(() => {
       this.showButton = true;
       setTimeout(() => { this.showButton = false; }, 6000);
     }, 6000);
   }
+  @HostListener('window:resize')
+checkMobile() {
+  const wasMobile = this.isMobile;
+  this.isMobile = window.innerWidth <= 768;
+  if (!wasMobile && this.isMobile) { this.sidebarOpen = false; }
+  else if (wasMobile && !this.isMobile) { this.sidebarOpen = true; }
+}
 
+closeSidebarOnMobile() {
+  if (this.isMobile) { this.sidebarOpen = false; }
+}
   toggleSidebar() { this.sidebarOpen = !this.sidebarOpen; }
 
   abrirSite(url: string) { window.open(url, '_blank'); }

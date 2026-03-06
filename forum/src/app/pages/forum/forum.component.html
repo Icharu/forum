@@ -1,5 +1,11 @@
 <div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
 
+  <!-- MOBILE BACKDROP — only renders on mobile when sidebar is open -->
+  <div class="sidebar-backdrop"
+       *ngIf="sidebarOpen && isMobile"
+       (click)="toggleSidebar()">
+  </div>
+
   <!-- LEFT SIDEBAR -->
   <aside class="sidebar" [class.open]="sidebarOpen">
 
@@ -16,35 +22,35 @@
     <nav class="sidebar-nav">
       <span class="nav-section-label collapsible">Navegação</span>
 
-      <a class="nav-item active" (click)="VoltarForum()">
+      <a class="nav-item active" (click)="VoltarForum(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>home</mat-icon></span>
         <span class="nav-label collapsible">Início</span>
       </a>
-      <a class="nav-item" (click)="IrParaVida()">
+      <a class="nav-item" (click)="IrParaVida(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>school</mat-icon></span>
         <span class="nav-label collapsible">Vida no Curso</span>
       </a>
-      <a class="nav-item" (click)="IrParaCurso()">
+      <a class="nav-item" (click)="IrParaCurso(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>book</mat-icon></span>
         <span class="nav-label collapsible">Estrutura Curricular</span>
       </a>
-      <a class="nav-item" (click)="IrParaTurmas()">
+      <a class="nav-item" (click)="IrParaTurmas(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>group</mat-icon></span>
         <span class="nav-label collapsible">Turmas</span>
       </a>
-      <a class="nav-item" (click)="IrParaFaqs()">
+      <a class="nav-item" (click)="IrParaFaqs(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
         <span class="nav-label collapsible">Dúvidas Frequentes</span>
       </a>
-      <a class="nav-item" (click)="IrParaSimulador()">
+      <a class="nav-item" (click)="IrParaSimulador(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>grading</mat-icon></span>
         <span class="nav-label collapsible">Simulador de CR</span>
       </a>
-      <a class="nav-item" (click)="IrParaCreditos()">
+      <a class="nav-item" (click)="IrParaCreditos(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
         <span class="nav-label collapsible">Créditos</span>
       </a>
-      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin()">
+      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin(); closeSidebarOnMobile()">
         <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
         <span class="nav-label collapsible">Admin</span>
       </a>

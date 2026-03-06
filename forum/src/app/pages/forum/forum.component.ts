@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { UserService } from '../../services/user.service';
@@ -18,6 +18,7 @@ export class ForumComponent implements OnInit {
 
   showButton = false;
   sidebarOpen = true;
+  isMobile = false;
   rawFrases: string[] = ['<strong>Bem vindo ao Fórum</strong>'];
   newsList: News[] = [];
   isAdmin: boolean = false;
@@ -34,21 +35,39 @@ export class ForumComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.checkMobile();
     this.digitarFrase();
 
     setTimeout(() => {
       this.showButton = true;
-      setTimeout(() => {
-        this.showButton = false;
-      }, 6000);
+      setTimeout(() => { this.showButton = false; }, 6000);
     }, 6000);
 
     this.isAdmin = this.userService.getIsAdmin();
     this.carregarNoticias();
   }
 
+  @HostListener('window:resize')
+  checkMobile() {
+    const wasMobile = this.isMobile;
+    this.isMobile = window.innerWidth <= 768;
+
+    // Only auto-adjust sidebarOpen on breakpoint crossings
+    if (!wasMobile && this.isMobile) {
+      this.sidebarOpen = false; // just became mobile → close
+    } else if (wasMobile && !this.isMobile) {
+      this.sidebarOpen = true;  // just became desktop → open
+    }
+  }
+
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  closeSidebarOnMobile() {
+    if (this.isMobile) {
+      this.sidebarOpen = false;
+    }
   }
 
   digitarFrase() {
@@ -77,16 +96,14 @@ export class ForumComponent implements OnInit {
     });
   }
 
-  abrirSite(url: string): void {
-    window.open(url, '_blank');
-  }
+  abrirSite(url: string): void { window.open(url, '_blank'); }
 
-  VoltarForum()      { this.router.navigate(['/']); }
-  IrParaVida()       { this.router.navigate(['/vida']); }
-  IrParaCurso()      { this.router.navigate(['/curso']); }
-  IrParaTurmas()     { this.router.navigate(['/turmas']); }
-  IrParaFaqs()       { this.router.navigate(['/faqs']); }
-  IrParaSimulador()  { this.router.navigate(['/simulador']); }
-  IrParaCreditos()   { this.router.navigate(['/creditos']); }
-  IrParaAdmin()      { this.router.navigate(['/admin']); }
+  VoltarForum()     { this.router.navigate(['/']); }
+  IrParaVida()      { this.router.navigate(['/vida']); }
+  IrParaCurso()     { this.router.navigate(['/curso']); }
+  IrParaTurmas()    { this.router.navigate(['/turmas']); }
+  IrParaFaqs()      { this.router.navigate(['/faqs']); }
+  IrParaSimulador() { this.router.navigate(['/simulador']); }
+  IrParaCreditos()  { this.router.navigate(['/creditos']); }
+  IrParaAdmin()     { this.router.navigate(['/admin']); }
 }

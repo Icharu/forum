@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class CreditosComponent implements OnInit {
   rawFrases: string[] = ['<strong>Criador do Site</strong>'];
   textoDigitado: SafeHtml = '';
   indiceFrase = 0;
+  isMobile = false;
   indiceLetra = 0;
 
   constructor(
@@ -31,7 +32,7 @@ export class CreditosComponent implements OnInit {
 
   ngOnInit() {
     this.digitarFrase();
-
+    this.checkMobile();
     setTimeout(() => {
       this.showButton = true;
       setTimeout(() => {
@@ -77,4 +78,16 @@ export class CreditosComponent implements OnInit {
   IrParaSimulador() { this.router.navigate(['/simulador']); }
   IrParaCreditos()  { this.router.navigate(['/creditos']); }
   IrParaAdmin()     { this.router.navigate(['/admin']); }
+
+  @HostListener('window:resize')
+checkMobile() {
+  const wasMobile = this.isMobile;
+  this.isMobile = window.innerWidth <= 768;
+  if (!wasMobile && this.isMobile) { this.sidebarOpen = false; }
+  else if (wasMobile && !this.isMobile) { this.sidebarOpen = true; }
+}
+
+closeSidebarOnMobile() {
+  if (this.isMobile) { this.sidebarOpen = false; }
+}
 }
