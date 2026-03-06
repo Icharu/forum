@@ -1,117 +1,240 @@
-<div *ngIf="showButton" class="img1">
-  <img src="/img/welcome.png" class="img2" alt="yknow">
-  <div>
-    <h2>Está curtindo o site?</h2>
-    <p>
-      Se quiser sugerir alguma coisa, contate o dev!
-    </p>
+<div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="#2B3C50"/>
+          <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="brand-label collapsible">Fórum</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label collapsible">Navegação</span>
+
+      <a class="nav-item" (click)="VoltarForum()">
+        <span class="nav-icon"><mat-icon>home</mat-icon></span>
+        <span class="nav-label collapsible">Início</span>
+      </a>
+      <a class="nav-item" (click)="IrParaVida()">
+        <span class="nav-icon"><mat-icon>school</mat-icon></span>
+        <span class="nav-label collapsible">Vida no Curso</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCurso()">
+        <span class="nav-icon"><mat-icon>book</mat-icon></span>
+        <span class="nav-label collapsible">Estrutura Curricular</span>
+      </a>
+      <a class="nav-item" (click)="IrParaTurmas()">
+        <span class="nav-icon"><mat-icon>group</mat-icon></span>
+        <span class="nav-label collapsible">Turmas</span>
+      </a>
+      <a class="nav-item active" (click)="IrParaFaqs()">
+        <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
+        <span class="nav-label collapsible">Dúvidas Frequentes</span>
+      </a>
+      <a class="nav-item" (click)="IrParaSimulador()">
+        <span class="nav-icon"><mat-icon>grading</mat-icon></span>
+        <span class="nav-label collapsible">Simulador de CR</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCreditos()">
+        <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
+        <span class="nav-label collapsible">Créditos</span>
+      </a>
+      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin()">
+        <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
+        <span class="nav-label collapsible">Admin</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-updates collapsible">
+      <span class="nav-section-label">
+        <mat-icon style="font-size:14px;vertical-align:middle;">update</mat-icon> Atualizações
+      </span>
+      <ul>
+        <li>Revamp do design do fórum</li>
+      </ul>
+      <button class="repo-btn" (click)="abrirSite('https://github.com/Icharu/forum')">
+        <mat-icon style="font-size:16px;">open_in_new</mat-icon> Repositório
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+
+    <!-- TOP NAVBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="toggle-btn" (click)="toggleSidebar()">
+          <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+        <div class="topbar-title">
+          <h1>Fórum do Curso de Engenharia da Computação</h1>
+          <span class="topbar-dot">·</span>
+          <span class="topbar-sub">UEMA — 2026.1</span>
+        </div>
+      </div>
+      <div class="topbar-tabs">
+        <button class="tab" (click)="VoltarForum()">Notícias</button>
+        <button class="tab" (click)="IrParaVida()">Curso</button>
+        <button class="tab active">FAQ</button>
+      </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <div class="frase" [innerHTML]="textoDigitado"></div>
+        <p class="hero-sub">Tire suas dúvidas sobre o curso de Engenharia da Computação — UEMA.</p>
+        <button class="hero-btn" (click)="IrParaCurso()">Ver estrutura curricular <mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </div>
+
+    <!-- FAQ CONTENT -->
+    <div class="faq-layout">
+
+      <section class="faq-section">
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">01</div>
+          <div class="faq-body">
+            <h3 class="faq-question">O curso de engenharia de computação é só programação?</h3>
+            <p class="faq-answer">Se engana quem pensa que engenharia de computação é apenas tocar em teclado — na realidade, segue uma linha de raciocínio bem ampla. Você terá que lidar com circuitos, eletrônica, física, matemática, lógica, algoritmos, estruturas de dados, redes de computadores, sistemas operacionais, inteligência artificial, entre outros.</p>
+            <p class="faq-answer">Mas não se assuste — pelo menos diga isso a si mesmo.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">02</div>
+          <div class="faq-body">
+            <h3 class="faq-question">Quais as áreas que um engenheiro da computação pode atuar?</h3>
+            <p class="faq-answer">Pelo fato do curso ter vantagem na sua versatilidade, há diversas mãos de caminhos que podem precisar de uma análise de dados, análise de sistemas, entre outros. O curso pode oferecer diversas oportunidades e caminhos de interesse que podem lhe agradar.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">03</div>
+          <div class="faq-body">
+            <h3 class="faq-question">O curso em si é difícil?</h3>
+            <p class="faq-answer">Muitas pessoas dirão que o curso é difícil, mas isso depende muito do quão longe você planeja ir e o quanto pretende se esforçar. Terá várias matérias que lhe darão um susto, e isso é normal — terá vezes que você vai se frustrar, mas é preciso calma.</p>
+            <p class="faq-answer">O curso é desafiador para quem não está acostumado com a área. Saber matemática básica não garantirá que você passe em todas as matérias.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">04</div>
+          <div class="faq-body">
+            <h3 class="faq-question">Quais as matérias que terei no curso?</h3>
+            <p class="faq-answer">Você pode verificar cada uma delas na página da estrutura curricular.</p>
+            <button class="action-btn" (click)="IrParaCurso()">
+              <mat-icon>open_in_new</mat-icon> Ir para a página do curso
+            </button>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">05</div>
+          <div class="faq-body">
+            <h3 class="faq-question">Pode adiantar cadeiras no curso? Como isso funciona?</h3>
+            <p class="faq-answer">Sim, você pode adiantar cadeiras de semestres futuros, mas tenha critério — isso pode lhe prejudicar no aprendizado e na sua profissionalidade. É bom consultar um veterano ou a coordenação para futuros usos.</p>
+            <p class="faq-answer">Você só poderá adiantar cadeiras a partir do segundo semestre, e é recomendável que seja apenas uma.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">06</div>
+          <div class="faq-body">
+            <h3 class="faq-question">Como funcionam as cadeiras de férias?</h3>
+            <p class="faq-answer">Acontecem apenas no final do ano (conhecidas como (ano).4). Você pode ter apenas 1 cadeira de férias com duração de um mês. Esta cadeira só pode ser específica ao curso — cadeiras como EDO, Cálculo 1, Cálculo 2, Física 1 não podem ser de férias.</p>
+            <p class="faq-answer">Abaixo está a lista de cadeiras que podem ser de férias:</p>
+            <button class="action-btn" (click)="download()">
+              <mat-icon>download</mat-icon> Ver Cadeiras de Férias
+            </button>
+            <p class="faq-note">Precisa da assinatura de pelo menos 10 pessoas para abrir a cadeira de férias. Verifique mais informações com a coordenação do curso.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">07</div>
+          <div class="faq-body">
+            <h3 class="faq-question">Como funcionam as provas do curso? E se eu ficar de final ou reprovar?</h3>
+            <p class="faq-answer">São 3 provas por cadeira a cada semestre. Caso não atingir pelo menos 15 na soma das três notas você reprova; caso fique entre 15 e 21 pontos, você fica de final.</p>
+            <p class="faq-answer">Na final, a média mínima é 5.0. Veja a fórmula:</p>
+            <div class="faq-img-wrapper">
+              <img src="/img/nota_final.png" alt="Fórmula da nota final" class="faq-img">
+            </div>
+            <p class="faq-answer">Xn = Nota necessária para passar na final. n1, n2, n3 são as notas das três provas.</p>
+            <button class="action-btn" (click)="IrParaCalc()">
+              <mat-icon>open_in_new</mat-icon> Calculadora mágica
+            </button>
+          </div>
+        </div>
+
+        <!-- FAQ Item -->
+        <div class="faq-card">
+          <div class="faq-number">08</div>
+          <div class="faq-body">
+            <h3 class="faq-question">Como funciona o CR? O que é isso?</h3>
+            <p class="faq-answer">Tenha bastante cuidado para não prejudicar seu CR — ele decidirá se você passa em algumas oportunidades dentro da UEMA, como projetos de pesquisa e extensão. O cálculo depende dos créditos de cada cadeira multiplicados pela média, acumulado por cadeira (não por semestre).</p>
+            <div class="faq-img-wrapper">
+              <img src="/img/equacao-de-cr2.png" alt="Equação do CR" class="faq-img">
+            </div>
+            <p class="faq-answer">CR = Coeficiente de Rendimento · P(n) = Soma de todos os créditos cursados · Xi = Médias das cadeiras · Cada crédito equivale a 15 horas.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT PANEL -->
+      <aside class="right-panel">
+        <div class="section-header">
+          <h2>Links Úteis</h2>
+        </div>
+        <div class="link-list">
+          <button class="link-item" (click)="IrParaCurso()">
+            <mat-icon>book</mat-icon>
+            <span>Estrutura Curricular</span>
+            <mat-icon class="link-arrow">chevron_right</mat-icon>
+          </button>
+          <button class="link-item" (click)="IrParaSimulador()">
+            <mat-icon>grading</mat-icon>
+            <span>Simulador de CR</span>
+            <mat-icon class="link-arrow">chevron_right</mat-icon>
+          </button>
+          <button class="link-item" (click)="IrParaSimulador()">
+            <mat-icon>calculate</mat-icon>
+            <span>Calculadora de Notas</span>
+            <mat-icon class="link-arrow">chevron_right</mat-icon>
+          </button>
+          <button class="link-item" (click)="download()">
+            <mat-icon>download</mat-icon>
+            <span>Cadeiras de Férias</span>
+            <mat-icon class="link-arrow">chevron_right</mat-icon>
+          </button>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="showButton" class="floating-card">
+  <img src="/img/welcome.png" class="float-img" alt="welcome">
+  <div class="float-text">
+    <h4>Está curtindo o site?</h4>
+    <p>Sugestões? Contate o dev!</p>
   </div>
 </div>
-<mat-sidenav-container class="sidenav-container">
-  <!-- SideNav -->
-  <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
-    <mat-nav-list>
-      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
-      <a mat-list-item (click)="IrParaVida()" class="white"><mat-icon>school</mat-icon> Vida no Curso</a>
-      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Estrutura Curricular</a>
-      <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
-      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
-      <a mat-list-item (click)="IrParaSimulador()" class="white"><mat-icon>grading</mat-icon> Simulador de CR</a>
-      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
-      <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
-    </mat-nav-list>
-        <div class="updates">
-      <h2><mat-icon>update</mat-icon> Atualizações:</h2>
-      <p>-> Adicionado fluxograma dos cursos
-        <br>-> Adicionado CRUD para notícias
-        <br>-> Adicionado Simulador de CR
-      </p>
-        <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
-        <button class="btn1" (click)="abrirSite('https://github.com/Icharu/forum')">Fórum</button>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="username">Fórum do Curso de EngComp</span>
-      <span class="flex-spacer"></span>
-      <span *ngIf="isLogged" class="username">{{ username1 }}</span>
-      <button *ngIf="isLogged" class="btn1" (click)="logout()">
-            Log-out
-      </button>
-        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
-            Login
-      </button>
-    </mat-toolbar>
-    <div class="header">
-      <div class="Bemvindo">
-              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
-              </div>
-        <img src="/img/huh.png" class="gif" alt="yknow">
-      </div>
-      <p>Compartilhe suas experiências, contate o criador para adicionar ao site.</p>
-      <h2>1° O curso de engenharia de computação é só programação?</h2>
-      <p>Se engana quem pensa que engenharia de computação é apenas tocar em teclado, na realidade, segue uma linha de racíocinio bem ampla, programar é uma questão muito vaga.
-        <br>Você terá que lidar com circuitos, eletrônica, física, matemática, lógica, algoritmos, estruturas de dados, redes de computadores, sistemas operacionais, inteligência artificial, entre outros.
-    <br>Mas não se assuste, pelo menos diga isso à si mesmo.</p>
-      <h2>2° Quais as áreas que um engenheiro da computação pode atuar?</h2>
-      <p>Pelo o fato do curso ter uma vantagem na sua versatilidade, digamos que há diversas mãos de caminhos que podem precisar de uma análise de dados, por exemplo, ou análise de sistemas, por assim dizer
-        o curso pode oferecer diversas oportunidades e caminhos de interesse que podem lhe agradar.
-      </p>
-      <h2>3° O curso em si é difícil?</h2>
-      <p>
-        Confie na gente, muitas pessoas dirão que o curso é difícil, mas isso depende muito do quão longe você planeja ir e o tanto que você pretende se esforçar.
-        <br><br> Mas nem sempre por dizer isso quer dizer que é fácil, terá várias matérias que lhe darão um susto, e isso é normal, terá vezes que você vai se infrustrar, mas é preciso calma.
-        <br>Mas o curso em si, é desafiador para uma pessoa que não está acostumada com a área, só pelo o fato de você saber matemática básica não garantirá que você passe em todas as matérias.
-      </p>
-        <h2>4° Quais as matérias que terei no curso?</h2>
-        <p>
-            Você pode verificar cada uma delas a seguir:
-        </p>
-        <button class="btn2"(click)="IrParaCurso()">Ir para a página do curso <mat-icon>open_in_new</mat-icon></button>
-        <h2>5° Pode adiantar cadeiras no curso? Como isso funciona?</h2>
-        <p>Sim, você pode, e tem direito de adiantar cadeiras, mas saiba como lidar com isso sabiamente.
-            <br>Você pode adiantar cadeiras de semestres futuros, mas tenha critério que isso pode lhe prejudicar no aprendizado e sua profissionalidade.
-            <br>É bom consultar um veterano, ou a coordenação para futuros usos.
-            <br>Você só poderá adiantar cadeiras a partir do segundo semestre, é recomendável que seja apenas uma.
-        </p>
-        <h2>6° Como funciona as cadeiras de férias?</h2>
-        <p>Acontecem apenas no final do ano, conhecidas como (ano).4, você pode ter apenas 1 cadeira de férias que durará um mês.
-            <br>Esta cadeira só pode ser especifica ao curso em questão, ou seja, outras cadeiras como EDO, Cálculo 1, Cálculo 2, Física 1, não podem ser cadeiras de férias.
-            <br>Aqui abaixo está a lista de cadeiras que podem ser de férias:
-        </p>
-        <button class="btn2" (click)="download()">Ver Cadeiras de Férias <mat-icon>download</mat-icon></button>
-        <p>Vale lembrar que precisa da assinatura de pelo menos 10 pessoas para abrir a cadeira de férias, verifique mais informações com a coordenação do curso.</p>
-        <h2>7° Como funciona as provas do curso? E se eu ficar de final? Ou reprovar?</h2>
-        <p>Primeiramente temos 3 provas cada semestre para cada cadeira, ou seja, se tiver 6 cadeiras terá 18 provas nesse semestre, isso se você passar direto.
-            <br>Caso não atingir pelo menos 15 na soma das três notas você reprova na cadeira, caso ficar entre 15 e 21 pontos nessa somatória, você fica de final.
-            <br>A final será feita a seguir do cálculo a seguir.
-        </p>
-        <img src="/img/nota_final.png" class="img">
-        <p>
-            Xn = Nota necessária para passar na final.
-            <br>n1, n2, n3 são as notas das três provas.
-            <br><br>
-            Não apenas isso, mas para passar na final à média cai para 5.0, é por conta disso que a equação fica assim.
-        </p>
-        <!--Calculadora-->
-        <p>Quer realmente cálcular se passou, reprovou ou ficou de final? Olhe abaixo</p>
-        <button class="btn2" (click)="IrParaCalc()">Cálculadora mágica <mat-icon>open_in_new</mat-icon></button>
-        <h2>8° E como funciona o CR? O que é isso?</h2>
-        <p>Tenha bastante cuidado para não prejudicar seu CR, ele irá decidir se você passa em algumas oportunidades que podem ter dentro da UEMA, ou projeto de pesquisa, extensão, etc.
-            <br>Portanto, é assim que funciona o cálculo do Coeficiente de Rendimento:
-            <br><br>
-            Ela irá depender dos créditos que a cadeira tiver, multiplicado com a média da cadeira do semestre, e é adicionada por cadeira, não por semestre.
-        </p>
-        <img src="/img/equacao-de-cr2.png" class="img">
-        <p>CR = Coeficiente de Rendimento
-            <br>P(n) = Soma de todos os créditos que você já teve
-            <br>Somatório da multiplicação das médias das cadeiras(Xi)e seus respectivos créditos(P).
-            <br>Cada crédito tem 15 horas.
-        </p>
-    </div>
-  </mat-sidenav-content>
-  
-</mat-sidenav-container>

@@ -1,97 +1,211 @@
-<div *ngIf="showButton" class="img">
-  <img src="/img/welcome.png" class="img2" alt="yknow">
-  <div>
-    <h2>Está curtindo o site?</h2>
-    <p>
-      Se quiser sugerir alguma coisa, contate o dev!
-    </p>
+<div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="#2B3C50"/>
+          <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="brand-label collapsible">Fórum</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label collapsible">Navegação</span>
+
+      <a class="nav-item" (click)="VoltarForum()">
+        <span class="nav-icon"><mat-icon>home</mat-icon></span>
+        <span class="nav-label collapsible">Início</span>
+      </a>
+      <a class="nav-item" (click)="IrParaVida()">
+        <span class="nav-icon"><mat-icon>school</mat-icon></span>
+        <span class="nav-label collapsible">Vida no Curso</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCurso()">
+        <span class="nav-icon"><mat-icon>book</mat-icon></span>
+        <span class="nav-label collapsible">Estrutura Curricular</span>
+      </a>
+      <a class="nav-item" (click)="IrParaTurmas()">
+        <span class="nav-icon"><mat-icon>group</mat-icon></span>
+        <span class="nav-label collapsible">Turmas</span>
+      </a>
+      <a class="nav-item" (click)="IrParaFaqs()">
+        <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
+        <span class="nav-label collapsible">Dúvidas Frequentes</span>
+      </a>
+      <a class="nav-item active" (click)="IrParaSimulador()">
+        <span class="nav-icon"><mat-icon>grading</mat-icon></span>
+        <span class="nav-label collapsible">Simulador de CR</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCreditos()">
+        <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
+        <span class="nav-label collapsible">Créditos</span>
+      </a>
+      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin()">
+        <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
+        <span class="nav-label collapsible">Admin</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-updates collapsible">
+      <span class="nav-section-label">
+        <mat-icon style="font-size:14px;vertical-align:middle;">update</mat-icon> Atualizações
+      </span>
+      <ul>
+        <li>Revamp do design do fórum</li>
+      </ul>
+      <button class="repo-btn" (click)="abrirSite('https://github.com/Icharu/forum')">
+        <mat-icon style="font-size:16px;">open_in_new</mat-icon> Repositório
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+
+    <!-- TOP NAVBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="toggle-btn" (click)="toggleSidebar()">
+          <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+        <div class="topbar-title">
+          <h1>Fórum do Curso de Engenharia da Computação</h1>
+          <span class="topbar-dot">·</span>
+          <span class="topbar-sub">UEMA — 2026.1</span>
+        </div>
+      </div>
+      <div class="topbar-tabs">
+        <button class="tab" (click)="VoltarForum()">Notícias</button>
+        <button class="tab" (click)="IrParaCurso()">Curso</button>
+        <button class="tab active">Simulador</button>
+      </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <div class="frase" [innerHTML]="textoDigitado"></div>
+        <p class="hero-sub">Só porque está aqui não quer dizer que não passou.</p>
+        <button class="hero-btn" (click)="IrParaFaqs()">Como funciona o CR? <mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+      <div class="simul-layout">
+
+        <!-- CR SIMULATOR -->
+        <section class="simul-card">
+          <div class="section-header">
+            <h2>Simulador de CR</h2>
+            <span class="count-badge">{{ materias.length }} {{ materias.length === 1 ? 'matéria' : 'matérias' }}</span>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Matéria</label>
+            <input
+              type="text"
+              class="sim-input"
+              placeholder="Ex: Cálculo 1"
+              name="nome"
+              [(ngModel)]="novaMateria.nome"
+            >
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label class="input-label">Créditos</label>
+              <input
+                type="number"
+                class="sim-input"
+                placeholder="Ex: 4"
+                name="creditos"
+                [(ngModel)]="novaMateria.creditos"
+              >
+            </div>
+            <div class="input-group">
+              <label class="input-label">Média</label>
+              <input
+                type="number"
+                class="sim-input"
+                placeholder="Ex: 8.5"
+                name="media"
+                [(ngModel)]="novaMateria.media"
+              >
+            </div>
+          </div>
+
+          <button class="add-btn" type="button" (click)="adicionarMateria()">
+            <mat-icon>add</mat-icon> Adicionar Matéria
+          </button>
+
+          <div class="materia-list" *ngIf="materias.length > 0">
+            <div class="materia-item" *ngFor="let m of materias">
+              <span class="materia-nome">{{ m.nome || 'Matéria' }}</span>
+              <div class="materia-badges">
+                <span class="badge">Média: {{ m.media }}</span>
+                <span class="badge">{{ m.creditos }} cr.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cr-result" *ngIf="materias.length > 0">
+            <span class="cr-label">CR Atual</span>
+            <span class="cr-value">{{ calcularCR() | number:'1.2-2' }}</span>
+          </div>
+
+          <div class="empty-hint" *ngIf="materias.length === 0">
+            <mat-icon>school</mat-icon>
+            <p>Adicione matérias para calcular seu CR.</p>
+          </div>
+        </section>
+
+        <!-- NOTE CALCULATOR -->
+        <section class="simul-card">
+          <div class="section-header">
+            <h2>Calculadora de Notas</h2>
+          </div>
+          <p class="sim-desc">Informe suas três notas para saber se passou, ficou de final ou reprovou.</p>
+
+          <div class="input-group">
+            <label class="input-label">Nota 1</label>
+            <input type="number" class="sim-input" placeholder="0 – 10" name="nota1" [(ngModel)]="nota1">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Nota 2</label>
+            <input type="number" class="sim-input" placeholder="0 – 10" name="nota2" [(ngModel)]="nota2">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Nota 3</label>
+            <input type="number" class="sim-input" placeholder="0 – 10" name="nota3" [(ngModel)]="nota3">
+          </div>
+
+          <button class="add-btn" type="button" (click)="calcular()">
+            <mat-icon>calculate</mat-icon> Calcular
+          </button>
+
+          <div class="resultado-box" *ngIf="resultado">
+            <mat-icon class="resultado-icon">info_outline</mat-icon>
+            <p class="resultado-text">{{ resultado }}</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
   </div>
 </div>
-<mat-sidenav-container class="sidenav-container">
-  <!-- SideNav -->
-  <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
-    <mat-nav-list>
-      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
-      <a mat-list-item (click)="IrParaVida()" class="white"><mat-icon>school</mat-icon> Vida no Curso</a>
-      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Estrutura Curricular</a>
-      <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
-      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
-      <a mat-list-item (click)="IrParaSimulador()" class="white"><mat-icon>grading</mat-icon> Simulador de CR</a>
-      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
-      <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
-    </mat-nav-list>
-        <div class="updates">
-      <h2 class="updates2"><mat-icon>update</mat-icon> Atualizações:</h2>
-      <p class="updates2">-> Adicionado fluxograma dos cursos
-        <br>-> Adicionado CRUD para notícias
-        <br>-> Adicionado Simulador de CR
-      </p>
-        <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
-        <button class="btn1" (click)="abrirSite('https://github.com/Icharu/forum')">Fórum</button>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="username">Fórum do Curso de EngComp</span>
-      <span class="flex-spacer"></span>
-            <span *ngIf="isLogged" class="username">{{ username1 }}</span>
-      <button *ngIf="isLogged" class="btn1" (click)="logout()">
-            Log-out
-      </button>
-        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
-            Login
-      </button>
-    </mat-toolbar>
-    <div class="header">
-      <div class="Bemvindo">
-              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
-              </div>
-        <img src="/img/something.png" class="gif" alt="yknow">
-      </div>
-      <p>Só por que está aqui não quer dizer que não passou.</p>
-    </div>
-<form>
-  <div class="simul">
-    <h2>Simulador de CR</h2>
 
-    <input
-      type="text"
-      placeholder="Matéria"
-      name="nome"
-      [(ngModel)]="novaMateria.nome"
-    >
-
-    <input
-      type="number"
-      placeholder="Créditos"
-      name="creditos"
-      [(ngModel)]="novaMateria.creditos"
-    >
-
-    <input
-      type="number"
-      placeholder="Média"
-      name="media"
-      [(ngModel)]="novaMateria.media"
-    >
-
-    <button type="button" (click)="adicionarMateria()">
-      Adicionar
-    </button>
-
-    <hr>
-
-    <p *ngFor="let m of materias">
-      {{ m.nome }} — Média: {{ m.media }} — Créditos: {{ m.creditos }}
-    </p>
-
-    <h3>CR Atual: {{ calcularCR() | number:'1.2-2' }}</h3>
+<div *ngIf="showButton" class="floating-card">
+  <img src="/img/welcome.png" class="float-img" alt="welcome">
+  <div class="float-text">
+    <h4>Está curtindo o site?</h4>
+    <p>Sugestões? Contate o dev!</p>
   </div>
-</form>
-
-  </mat-sidenav-content>
-  
-</mat-sidenav-container>
+</div>

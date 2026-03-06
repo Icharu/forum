@@ -1,125 +1,157 @@
-<div *ngIf="showButton" class="img">
-  <img src="/img/welcome.png" class="img2" alt="yknow">
-  <div class="likes">
-    <h2>Está curtindo o site?</h2>
-    <p>
-      Se quiser sugerir alguma coisa, contate o dev!
-    </p>
-  </div>
-</div>
-<mat-sidenav-container class="sidenav-container">
-  <!-- SideNav -->
-  <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
-    <mat-nav-list>
-      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
-      <a mat-list-item (click)="IrParaVida()" class="white"><mat-icon>school</mat-icon> Vida no Curso</a>
-      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Estrutura Curricular</a>
-      <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
-      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
-      <a mat-list-item (click)="IrParaSimulador()" class="white"><mat-icon>grading</mat-icon> Simulador de CR</a>
-      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
-      <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
-    </mat-nav-list>
-        <div class="updates">
-      <h2><mat-icon>update</mat-icon> Atualizações:</h2>
-     <p>-> Adicionado fluxograma dos cursos
-        <br>-> Adicionado CRUD para notícias
-        <br>-> Adicionado Simulador de CR
-      </p>
-        <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
-        <button class="btn1" (click)="abrirSite('https://github.com/Icharu/forum')">Fórum</button>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="username">Fórum do Curso de EngComp</span>
-      <span class="flex-spacer"></span>
+<div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
 
-      <span *ngIf="isLogged" class="username">{{ username1 }}</span>
-      <button *ngIf="isLogged" class="btn1" (click)="logout()">
-            Log-out
-      </button>
-        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
-            Login
-      </button>
-      <button *ngIf="isAdmin" class="btn1" (click)="IrParaAdmin()">
-            Admin
-      </button>
-    </mat-toolbar>
-          <div class="Bemvindo">
-              <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
-              </div>
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="#2B3C50"/>
+          <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </div>
-    <div class="header">
-      <p>Compartilhe suas experiências, contate o criador para adicionar ao site.</p>
-      <h2>Novo ao curso?</h2>
-      <p>Confira a página do curso, lá teremos algumas informações para calouros de Engenharia de computação!</p>
-      <button class="btn2"(click)="IrParaVida()">Ir para a página do curso <mat-icon>open_in_new</mat-icon></button>
-<section class="know-more3" id="know-more3">
-  <div class="text">
-    <h2>Notícias recentes</h2>
-    <p>Será sempre gravado do mais novo até o mais antigo</p>
+      <span class="brand-label collapsible">Fórum</span>
+    </div>
 
-    <div class="carousel-wrapper">
-      <button class="carousel-btn prev" (click)="scrollCarousel(-1)">&#10094;</button>
+    <nav class="sidebar-nav">
+      <span class="nav-section-label collapsible">Navegação</span>
 
-      <div class="grid-container" #carouselRef>
-        
-       <div class="book-card" *ngFor="let news of newsList">
-          <div class="book-image">
-            <img [src]="news.imgurl" [alt]="news.title">
-          </div>
+      <a class="nav-item active" (click)="VoltarForum()">
+        <span class="nav-icon"><mat-icon>home</mat-icon></span>
+        <span class="nav-label collapsible">Início</span>
+      </a>
+      <a class="nav-item" (click)="IrParaVida()">
+        <span class="nav-icon"><mat-icon>school</mat-icon></span>
+        <span class="nav-label collapsible">Vida no Curso</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCurso()">
+        <span class="nav-icon"><mat-icon>book</mat-icon></span>
+        <span class="nav-label collapsible">Estrutura Curricular</span>
+      </a>
+      <a class="nav-item" (click)="IrParaTurmas()">
+        <span class="nav-icon"><mat-icon>group</mat-icon></span>
+        <span class="nav-label collapsible">Turmas</span>
+      </a>
+      <a class="nav-item" (click)="IrParaFaqs()">
+        <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
+        <span class="nav-label collapsible">Dúvidas Frequentes</span>
+      </a>
+      <a class="nav-item" (click)="IrParaSimulador()">
+        <span class="nav-icon"><mat-icon>grading</mat-icon></span>
+        <span class="nav-label collapsible">Simulador de CR</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCreditos()">
+        <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
+        <span class="nav-label collapsible">Créditos</span>
+      </a>
+      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin()">
+        <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
+        <span class="nav-label collapsible">Admin</span>
+      </a>
+    </nav>
 
-          <div class="book-content">
-            <h3>{{ news.title }}</h3>
+    <div class="sidebar-updates collapsible">
+      <span class="nav-section-label">
+        <mat-icon style="font-size:14px;vertical-align:middle;">update</mat-icon> Atualizações
+      </span>
+      <ul>
+        <li>Revamp do design do fórum</li>
+      </ul>
+      <button class="repo-btn" (click)="abrirSite('https://github.com/Icharu/forum')">
+        <mat-icon style="font-size:16px;">open_in_new</mat-icon> Repositório
+      </button>
+    </div>
 
-            <p class="date">
-              {{ news.data }}
-            </p>
+  </aside>
 
-            <p class="description">
-              {{ news.descr }}
-            </p>
-          </div>
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+
+    <!-- TOP NAVBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="toggle-btn" (click)="toggleSidebar()">
+          <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+        <div class="topbar-title">
+          <h1>Fórum do Curso de Engenharia da Computação</h1>
+          <span class="topbar-dot">·</span>
+          <span class="topbar-sub">UEMA — 2026.1</span>
         </div>
       </div>
+      <div class="topbar-tabs">
+        <button class="tab active">Notícias</button>
+        <button class="tab" (click)="IrParaVida()">Curso</button>
+        <button class="tab" (click)="IrParaSimulador()">Simulador</button>
+      </div>
+    </header>
 
-      <button class="carousel-btn next" (click)="scrollCarousel(1)">&#10095;</button>
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <div class="frase" [innerHTML]="textoDigitado"></div>
+        <p class="hero-sub">Compartilhe experiências, tire dúvidas e fique por dentro da EngComp UEMA.</p>
+        <button class="hero-btn" (click)="IrParaVida()">Novo ao curso? <mat-icon>arrow_forward</mat-icon></button>
+      </div>
     </div>
 
-  </div>
-</section>
-<section class="know-more3" id="know-more3">
-  <div class="text">
-    <h2>Projetos Destaques</h2>
-    <p>Será sempre gravado do mais novo até o mais antigo</p>
+    <!-- FEED AREA -->
+    <div class="feed-layout">
 
-    <div class="carousel-wrapper">
-      <button class="carousel-btn prev" (click)="scrollCarousel(-1)">&#10094;</button>
+      <section class="threads-section">
+        <div class="section-header">
+          <h2>Notícias Recentes</h2>
+          <span class="count-badge">{{ newsList.length }}</span>
+        </div>
 
-      <div class="grid-container" #carouselRef>
-
-        <div class="book-card">
-          <div class="book-image">
-            <img src="/img/404.png" alt="404">
+        <div class="thread-list">
+          <div class="thread-card" *ngFor="let news of newsList">
+            <div class="thread-img" *ngIf="news.imgurl">
+              <img [src]="news.imgurl" [alt]="news.title">
+            </div>
+            <div class="thread-body">
+              <div class="thread-meta">
+                <span class="thread-tag">Notícia</span>
+                <span class="thread-date">{{ news.data }}</span>
+              </div>
+              <h3 class="thread-title">{{ news.title }}</h3>
+              <p class="thread-desc">{{ news.descr }}</p>
+              <div class="thread-footer">
+                <button class="respond-btn"><mat-icon>chat_bubble_outline</mat-icon> Ver mais</button>
+              </div>
+            </div>
           </div>
-          <div class="book-content">
-            <h3>Nenhum projeto novo por enquanto</h3>
+
+          <div class="thread-card empty-card" *ngIf="newsList.length === 0">
+            <div class="thread-body">
+              <p class="empty-msg">Nenhuma notícia publicada ainda.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-panel">
+        <div class="section-header">
+          <h2>Projetos Destaque</h2>
+        </div>
+        <div class="project-card">
+          <img src="/img/404.png" alt="404" class="project-img">
+          <div class="project-body">
+            <h4>Nenhum projeto novo</h4>
             <p>Quer colocar seu projeto aqui? Fale com o dev.</p>
           </div>
         </div>
+      </aside>
 
-      </div>
-
-      <button class="carousel-btn next" (click)="scrollCarousel(1)">&#10095;</button>
     </div>
-
   </div>
-</section>
-    </div>
-  </mat-sidenav-content>
-  
-</mat-sidenav-container>
+
+</div>
+
+<div *ngIf="showButton" class="floating-card">
+  <img src="/img/welcome.png" class="float-img" alt="welcome">
+  <div class="float-text">
+    <h4>Está curtindo o site?</h4>
+    <p>Sugestões? Contate o dev!</p>
+  </div>
+</div>

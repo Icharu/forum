@@ -14,11 +14,6 @@ export class App {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-
-    if (this.isMobileDevice()) {
-      alert('Este site não está disponível em dispositivos móveis.');
-      window.location.href = 'http://icarodejesus.com/404';
-    }
   }
 
   private isMobileDevice(): boolean {

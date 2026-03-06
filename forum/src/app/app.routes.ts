@@ -45,29 +45,12 @@ export const routes: Routes = [
         component: FaqsComponent
     },
     {
-        path: 'faqs/calc',
-        component: CalcComponent
-    },
-    {
         path: 'turmas',
         component: TurmasComponent
     },
     {
         path: 'vida',
         component: VidaComponent
-    },
-    {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'register',
-        component: RegisterComponent
-    },
-    {
-        path: 'admin',
-        component: AdminComponent,
-        canActivate: [AuthGuard]
     },
     {
         path: 'simulador',

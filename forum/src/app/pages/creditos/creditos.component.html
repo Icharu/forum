@@ -1,71 +1,141 @@
-<div *ngIf="showButton" class="img">
-  <img src="/img/welcome.png" class="img2" alt="yknow">
-  <div>
-    <h2>Está curtindo o site?</h2>
-    <p>
-      Se quiser sugerir alguma coisa, contate o dev!
-    </p>
+<div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="#2B3C50"/>
+          <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="brand-label collapsible">Fórum</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-section-label collapsible">Navegação</span>
+
+      <a class="nav-item" (click)="VoltarForum()">
+        <span class="nav-icon"><mat-icon>home</mat-icon></span>
+        <span class="nav-label collapsible">Início</span>
+      </a>
+      <a class="nav-item" (click)="IrParaVida()">
+        <span class="nav-icon"><mat-icon>school</mat-icon></span>
+        <span class="nav-label collapsible">Vida no Curso</span>
+      </a>
+      <a class="nav-item" (click)="IrParaCurso()">
+        <span class="nav-icon"><mat-icon>book</mat-icon></span>
+        <span class="nav-label collapsible">Estrutura Curricular</span>
+      </a>
+      <a class="nav-item" (click)="IrParaTurmas()">
+        <span class="nav-icon"><mat-icon>group</mat-icon></span>
+        <span class="nav-label collapsible">Turmas</span>
+      </a>
+      <a class="nav-item" (click)="IrParaFaqs()">
+        <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
+        <span class="nav-label collapsible">Dúvidas Frequentes</span>
+      </a>
+      <a class="nav-item" (click)="IrParaSimulador()">
+        <span class="nav-icon"><mat-icon>grading</mat-icon></span>
+        <span class="nav-label collapsible">Simulador de CR</span>
+      </a>
+      <a class="nav-item active" (click)="IrParaCreditos()">
+        <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
+        <span class="nav-label collapsible">Créditos</span>
+      </a>
+      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin()">
+        <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
+        <span class="nav-label collapsible">Admin</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-updates collapsible">
+      <span class="nav-section-label">
+        <mat-icon style="font-size:14px;vertical-align:middle;">update</mat-icon> Atualizações
+      </span>
+      <ul>
+        <li>Revamp do design do fórum</li>
+      </ul>
+      <button class="repo-btn" (click)="abrirSite('https://github.com/Icharu/forum')">
+        <mat-icon style="font-size:16px;">open_in_new</mat-icon> Repositório
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+
+    <!-- TOP NAVBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="toggle-btn" (click)="toggleSidebar()">
+          <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+        <div class="topbar-title">
+          <h1>Fórum do Curso de Engenharia da Computação</h1>
+          <span class="topbar-dot">·</span>
+          <span class="topbar-sub">UEMA — 2026.1</span>
+        </div>
+      </div>
+      <div class="topbar-tabs">
+        <button class="tab" (click)="VoltarForum()">Notícias</button>
+        <button class="tab" (click)="IrParaCurso()">Curso</button>
+        <button class="tab" (click)="IrParaSimulador()">Simulador</button>
+      </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <div class="frase" [innerHTML]="textoDigitado"></div>
+        <p class="hero-sub">Conheça quem está por trás do Fórum EngComp UEMA.</p>
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+      <div class="credits-card">
+
+        <div class="credits-avatar">
+          <a (click)="abrirSite('https://icarodejesus.com/')">
+            <img src="/img/Icarus7.png" alt="Icaro de Jesus Silva">
+          </a>
+        </div>
+
+        <div class="credits-info">
+          <div class="credits-meta">
+            <span class="thread-tag">Criador</span>
+          </div>
+          <h2 class="credits-name">Icaro de Jesus Silva</h2>
+          <p class="credits-bio">Estudante de Engenharia de Computação na UEMA, criador deste site para ajudar os calouros a se situarem no curso.</p>
+          <div class="credits-actions">
+            <button class="action-btn" (click)="abrirSite('https://icarodejesus.com/')">
+              <mat-icon>open_in_new</mat-icon> Portfólio
+            </button>
+            <button class="action-btn secondary" (click)="abrirSite('https://github.com/Icharu/forum')">
+              <mat-icon>code</mat-icon> Repositório
+            </button>
+          </div>
+        </div>
+
+        <div class="credits-gif">
+          <img src="/gof/icarus.gif" alt="Icarus">
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="showButton" class="floating-card">
+  <img src="/img/welcome.png" class="float-img" alt="welcome">
+  <div class="float-text">
+    <h4>Está curtindo o site?</h4>
+    <p>Sugestões? Contate o dev!</p>
   </div>
 </div>
-<mat-sidenav-container class="sidenav-container">
-  <!-- SideNav -->
-  <mat-sidenav #drawer mode="side" class="sidenav" [(opened)]="opened">
-    <mat-nav-list>
-      <a mat-list-item (click)="VoltarForum()" class="white"><mat-icon>home</mat-icon> Inicio</a>
-      <a mat-list-item (click)="IrParaVida()" class="white"><mat-icon>school</mat-icon> Vida no Curso</a>
-      <a mat-list-item (click)="IrParaCurso()" class="white"><mat-icon>book</mat-icon> Estrutura Curricular</a>
-      <a mat-list-item (click)="IrParaTurmas()" class="white"><mat-icon>group</mat-icon> Turmas</a>
-      <a mat-list-item (click)="IrParaFaqs()" class="white"><mat-icon>help</mat-icon> Dúvidas Frequentes</a>
-      <a mat-list-item (click)="IrParaSimulador()" class="white"><mat-icon>grading</mat-icon> Simulador de CR</a>
-      <a mat-list-item (click)="IrParaCreditos()" class="white"><mat-icon>person</mat-icon> Créditos</a>
-      <a *ngIf="isAdmin" mat-list-item (click)="IrParaAdmin()" class="white"><mat-icon>person</mat-icon> Admin</a>
-    </mat-nav-list>
-        <div class="updates">
-      <h2><mat-icon>update</mat-icon> Atualizações:</h2>
-      <p>-> Adicionado fluxograma dos cursos
-        <br>-> Adicionado CRUD para notícias
-        <br>-> Adicionado Simulador de CR
-      </p>
-        <h2><mat-icon>archive</mat-icon> Link para repositório do site:</h2>
-        <button class="btn1" (click)="abrirSite('https://github.com/Icharu/forum')">Fórum</button>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="username">Fórum do Curso de EngComp</span>
-      <span class="flex-spacer"></span>
-      <span *ngIf="isLogged" class="username">{{ username1 }}</span>
-      <button *ngIf="isLogged" class="btn1" (click)="logout()">
-            Log-out
-      </button>
-        <button *ngIf="!isLogged" class="btn1" (click)="IrParaLogin()">
-            Login
-      </button>
-    </mat-toolbar>
-    <div class="header">
-        <div class="criador1">
-            <div class="frase fade-slide-up"  [innerHTML]="textoDigitado">
-              </div>
-        <img src="/gof/icarus.gif" class="image">
-      </div>
-    </div>
-          <div class="criador">
-        <div class="coluna">
-          <h1 class="h3">Icaro de Jesus Silva</h1>
-          <p class="p2">Estudante de Engenharia de Computação na UEMA, criador deste site para ajudar os calouros a se situarem no curso.</p>
-          <button class="btn2">
-        <a class="a2"(click)="abrirSite('https://icarodejesus.com/')">Portfolio   <mat-icon>open_in_new</mat-icon></a>
-      </button>
-        </div>
-        <a (click)="abrirSite('https://icarodejesus.com/')">
-          <img src="/img/Icarus7.png" class="imagem">
-        </a>
-          
-          
-      </div>
-  </mat-sidenav-content>
-  
-</mat-sidenav-container>
