@@ -664,4 +664,13 @@ body, :host {
   .topbar-title h1 { font-size: 0.82rem; }
   .frase { font-size: 1.5rem; }
   .hero-banner { padding: 28px 20px; }
+  .right-panel {
+    display: none;
+  }
+  .faq-card {
+    width: 350px;
+  }
+  .faq-img {
+    max-width: 200px;
+  }
 }
