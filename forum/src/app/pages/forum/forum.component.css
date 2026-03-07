@@ -30,7 +30,7 @@ body, :host {
 }
 
 /* =====================
-   SIDEBAR — desktop: sticky in-flow
+   SIDEBAR
 ===================== */
 .sidebar {
   width: var(--sidebar-collapsed-width);
@@ -123,7 +123,7 @@ body, :host {
 .repo-btn:hover { opacity: 0.85; }
 
 /* =====================
-   BACKDROP — hidden on desktop
+   BACKDROP
 ===================== */
 .sidebar-backdrop {
   display: none;
@@ -248,17 +248,28 @@ body, :host {
 
 .thread-card:hover { box-shadow: var(--shadow-hover); border-color: #bbb; }
 
+/* Card without image: body fills full width */
+.thread-card.no-img .thread-img { display: none; }
+
 .thread-img { width: 160px; min-width: 160px; overflow: hidden; }
 .thread-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .thread-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-.thread-meta { display: flex; align-items: center; gap: 10px; }
+.thread-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
+/* ── Base tag style ── */
 .thread-tag {
-  background: var(--header-bg); color: var(--text-main); font-size: 0.72rem;
-  font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
   padding: 2px 8px; border-radius: 4px;
 }
+
+/* ── Tag colour variants ── */
+.tag-noticia { background: var(--header-bg);  color: var(--text-main); }
+.tag-evento  { background: #dbeafe;            color: #1e40af; }
+.tag-aviso   { background: #fef9c3;            color: #92400e; }
+.tag-urgente { background: #fee2e2;            color: #b91c1c; }
+.tag-projeto { background: #dcfce7;            color: #15803d; }
 
 .thread-date { font-size: 0.78rem; color: var(--text-sub); }
 .thread-title { font-size: 1rem; font-weight: 700; color: var(--text-main); line-height: 1.4; }
@@ -323,7 +334,7 @@ body, :host {
 }
 
 /* =====================
-   MOBILE — sidebar becomes fixed overlay
+   MOBILE
 ===================== */
 @media (max-width: 768px) {
 
@@ -345,7 +356,6 @@ body, :host {
     box-shadow: 6px 0 32px rgba(0, 0, 0, 0.22);
   }
 
-  /* All nav labels always visible inside mobile overlay */
   .sidebar .collapsible {
     opacity: 1 !important;
     pointer-events: auto !important;
@@ -361,4 +371,7 @@ body, :host {
   .frase { font-size: 1.5rem; }
   .feed-layout { padding: 16px; }
   .hero-banner { padding: 28px 20px; }
+
+  .thread-card { flex-direction: column; }
+  .thread-img { width: 100%; min-width: unset; height: 180px; }
 }

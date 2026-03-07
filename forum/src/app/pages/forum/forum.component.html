@@ -1,6 +1,6 @@
 <div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
 
-  <!-- MOBILE BACKDROP — only renders on mobile when sidebar is open -->
+  <!-- MOBILE BACKDROP -->
   <div class="sidebar-backdrop"
        *ngIf="sidebarOpen && isMobile"
        (click)="toggleSidebar()">
@@ -97,7 +97,9 @@
       <div class="hero-text">
         <div class="frase" [innerHTML]="textoDigitado"></div>
         <p class="hero-sub">Compartilhe experiências, tire dúvidas e fique por dentro da EngComp UEMA.</p>
-        <button class="hero-btn" (click)="IrParaVida()">Novo ao curso? <mat-icon>arrow_forward</mat-icon></button>
+        <button class="hero-btn" (click)="IrParaVida()">
+          Novo ao curso? <mat-icon>arrow_forward</mat-icon>
+        </button>
       </div>
     </div>
 
@@ -111,28 +113,48 @@
         </div>
 
         <div class="thread-list">
-          <div class="thread-card" *ngFor="let news of newsList">
+
+          <!-- News cards -->
+          <div class="thread-card"
+               [class.no-img]="!news.imgurl"
+               *ngFor="let news of newsList">
+
+            <!-- Image (only rendered when imgurl is set) -->
             <div class="thread-img" *ngIf="news.imgurl">
-              <img [src]="news.imgurl" [alt]="news.title">
+              <img [src]="news.imgurl" [alt]="news.title" loading="lazy">
             </div>
+
             <div class="thread-body">
               <div class="thread-meta">
-                <span class="thread-tag">Notícia</span>
+
+                <!-- Tag (only rendered when tag is set) -->
+                <span *ngIf="news.tag"
+                      class="thread-tag"
+                      [ngClass]="tagClass[news.tag]">
+                  {{ news.tag }}
+                </span>
+
                 <span class="thread-date">{{ news.data }}</span>
               </div>
+
               <h3 class="thread-title">{{ news.title }}</h3>
               <p class="thread-desc">{{ news.descr }}</p>
+
               <div class="thread-footer">
-                <button class="respond-btn"><mat-icon>chat_bubble_outline</mat-icon> Ver mais</button>
+                <button class="respond-btn" (click)="abrirSite(news.link || '#')">
+                  <mat-icon>chat_bubble_outline</mat-icon> Ver mais
+                </button>
               </div>
             </div>
           </div>
 
+          <!-- Empty state -->
           <div class="thread-card empty-card" *ngIf="newsList.length === 0">
             <div class="thread-body">
               <p class="empty-msg">Nenhuma notícia publicada ainda.</p>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -149,11 +171,13 @@
         </div>
       </aside>
 
-    </div>
-  </div>
+    </div><!-- /feed-layout -->
 
-</div>
+  </div><!-- /main-wrapper -->
 
+</div><!-- /app-shell -->
+
+<!-- FLOATING CARD -->
 <div *ngIf="showButton" class="floating-card">
   <img src="/img/welcome.png" class="float-img" alt="welcome">
   <div class="float-text">
