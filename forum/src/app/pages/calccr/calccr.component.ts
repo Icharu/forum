@@ -7,13 +7,16 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
 import { Materia } from '../../models/cr.model';
+import { SidebarComponent } from '../../components/sidebar/sidebar';
+import { TopbarComponent } from '../../components/topbar/topbar';
+import { FloatingCardComponent } from '../../components/floating-card/floating-card';
 
 @Component({
     selector: 'app-calccr',
     templateUrl: './calccr.component.html',
     styleUrls: ['./calccr.component.css'],
     standalone: true,
-    imports: [MatIconModule, FormsModule, CommonModule]
+    imports: [MatIconModule, FormsModule, CommonModule, SidebarComponent, TopbarComponent, FloatingCardComponent]
 })
 export class CalcCRComponent implements OnInit {
 

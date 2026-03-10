@@ -3,13 +3,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { SidebarComponent } from '../../components/sidebar/sidebar';
+import { TopbarComponent } from '../../components/topbar/topbar';
+import { FloatingCardComponent } from '../../components/floating-card/floating-card';
 
 @Component({
   selector: 'app-turmas',
   templateUrl: './turmas.component.html',
   styleUrls: ['./turmas.component.css'],
   standalone: true,
-  imports: [MatIconModule, CommonModule]
+  imports: [MatIconModule, CommonModule, SidebarComponent, TopbarComponent, FloatingCardComponent]
 })
 export class TurmasComponent implements OnInit {
 

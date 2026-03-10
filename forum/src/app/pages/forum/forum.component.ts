@@ -4,6 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SidebarComponent } from '../../components/sidebar/sidebar';
+import { TopbarComponent } from '../../components/topbar/topbar';
+import { FloatingCardComponent } from '../../components/floating-card/floating-card';
 
 export interface News {
   title:  string;
@@ -36,7 +39,7 @@ const HARDCODED_NEWS: News[] = [
   templateUrl: './forum.component.html',
   styleUrls: ['./forum.component.css'],
   standalone: true,
-  imports: [MatIconModule, CommonModule]
+  imports: [MatIconModule, CommonModule, SidebarComponent, TopbarComponent, FloatingCardComponent]
 })
 export class ForumComponent implements OnInit {
 

@@ -1,0 +1,30 @@
+:root {
+  --text-main: #2B3C50;
+}
+
+/* =====================
+   FLOATING CARD
+===================== */
+.floating-card {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  background: linear-gradient(135deg, #2B3C50 0%, #3d5a73 60%, #1e2f3e 100%);
+  color: #fff; border-radius: 20px;
+  display: flex; align-items: center; gap: 14px; padding: 14px 20px 14px 10px;
+  box-shadow: 0 12px 32px rgba(43,60,80,0.35), 0 0 0 1px rgba(255,255,255,0.08);
+  animation: floatIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  backdrop-filter: blur(8px);
+}
+
+.float-img {
+  width: 56px; height: 56px; object-fit: contain; border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+.float-text h4 { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.01em; }
+.float-text p  { font-size: 0.76rem; opacity: 0.75; margin-top: 3px; line-height: 1.4; }
+
+@keyframes floatIn {
+  0%   { opacity: 0; transform: translateY(24px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

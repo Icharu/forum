@@ -1,93 +1,16 @@
 <div class="app-shell" [class.sidebar-collapsed]="!sidebarOpen">
-<div class="sidebar-backdrop"
-       *ngIf="sidebarOpen && isMobile"
-       (click)="toggleSidebar()">
-  </div>
-  <!-- LEFT SIDEBAR -->
-  <aside class="sidebar" [class.open]="sidebarOpen">
-
-    <div class="sidebar-brand">
-      <div class="brand-icon">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect width="28" height="28" rx="8" fill="#2B3C50"/>
-          <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <span class="brand-label collapsible">Fórum</span>
-    </div>
-
-    <nav class="sidebar-nav">
-      <span class="nav-section-label collapsible">Navegação</span>
-
-      <a class="nav-item" (click)="VoltarForum(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>home</mat-icon></span>
-        <span class="nav-label collapsible">Início</span>
-      </a>
-      <a class="nav-item" (click)="IrParaVida(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>school</mat-icon></span>
-        <span class="nav-label collapsible">Vida no Curso</span>
-      </a>
-      <a class="nav-item active" (click)="IrParaCurso(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>book</mat-icon></span>
-        <span class="nav-label collapsible">Estrutura Curricular</span>
-      </a>
-      <a class="nav-item" (click)="IrParaTurmas(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>group</mat-icon></span>
-        <span class="nav-label collapsible">Turmas</span>
-      </a>
-      <a class="nav-item" (click)="IrParaFaqs(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
-        <span class="nav-label collapsible">Dúvidas Frequentes</span>
-      </a>
-      <a class="nav-item" (click)="IrParaSimulador(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>grading</mat-icon></span>
-        <span class="nav-label collapsible">Simulador de CR</span>
-      </a>
-      <a class="nav-item" (click)="IrParaCreditos(); closeSidebarOnMobile()">
-        <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
-        <span class="nav-label collapsible">Créditos</span>
-      </a>
-      <a *ngIf="isAdmin" class="nav-item" (click)="IrParaAdmin()">
-        <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
-        <span class="nav-label collapsible">Admin</span>
-      </a>
-    </nav>
-
-    <div class="sidebar-updates collapsible">
-      <span class="nav-section-label">
-        <mat-icon style="font-size:14px;vertical-align:middle;">update</mat-icon> Atualizações
-      </span>
-      <ul>
-        <li>Revamp do design do fórum</li>
-      </ul>
-      <button class="repo-btn" (click)="abrirSite('https://github.com/Icharu/forum')">
-        <mat-icon style="font-size:16px;">open_in_new</mat-icon> Repositório
-      </button>
-    </div>
-
-  </aside>
+  <!-- LEFT SIDEBAR COMPONENT -->
+  <app-sidebar [(sidebarOpen)]="sidebarOpen" currentRoute="curso"></app-sidebar>
 
   <!-- MAIN CONTENT -->
   <div class="main-wrapper">
 
-    <!-- TOP NAVBAR -->
-    <header class="topbar">
-      <div class="topbar-left">
-        <button class="toggle-btn" (click)="toggleSidebar()">
-          <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
-        </button>
-        <div class="topbar-title">
-          <h1>Fórum do Curso de Engenharia da Computação</h1>
-          <span class="topbar-dot">·</span>
-          <span class="topbar-sub">UEMA — 2026.1</span>
-        </div>
-      </div>
-      <div class="topbar-tabs">
-        <button class="tab" (click)="VoltarForum()">Notícias</button>
-        <button class="tab active">Curso</button>
-        <button class="tab" (click)="IrParaSimulador()">Simulador</button>
-      </div>
-    </header>
+    <!-- TOP NAVBAR COMPONENT -->
+    <app-topbar
+      [sidebarOpen]="sidebarOpen"
+      (toggleSidebar)="toggleSidebar()"
+      activeTab="curso">
+    </app-topbar>
 
     <!-- HERO BANNER -->
     <div class="hero-banner">
@@ -366,10 +289,5 @@
 
 </div>
 
-<div *ngIf="showButton" class="floating-card">
-  <img src="/img/welcome.png" class="float-img" alt="welcome">
-  <div class="float-text">
-    <h4>Está curtindo o site?</h4>
-    <p>Sugestões? Contate o dev!</p>
-  </div>
-</div>
+<!-- FLOATING CARD COMPONENT -->
+<app-floating-card [visible]="showButton"></app-floating-card>

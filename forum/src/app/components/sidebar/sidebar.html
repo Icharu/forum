@@ -1,0 +1,77 @@
+<!-- MOBILE BACKDROP -->
+<div class="sidebar-backdrop" *ngIf="sidebarOpen && isMobile" (click)="toggleSidebar()">
+</div>
+
+<!-- LEFT SIDEBAR -->
+<aside class="sidebar" [class.open]="sidebarOpen">
+
+  <div class="sidebar-brand">
+    <div class="brand-icon">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="brandGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2B3C50" />
+            <stop offset="60%" stop-color="#4a7fa5" />
+            <stop offset="100%" stop-color="#7ec8e3" />
+          </linearGradient>
+        </defs>
+        <rect width="28" height="28" rx="8" fill="url(#brandGrad)" />
+        <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </div>
+    <span class="brand-label collapsible">Fórum de EngComp</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <span class="nav-section-label collapsible">Navegação</span>
+
+    <a class="nav-item" [class.active]="currentRoute === 'home' || currentRoute === ''"
+      (click)="VoltarForum(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>home</mat-icon></span>
+      <span class="nav-label collapsible">Início</span>
+    </a>
+    <a class="nav-item" [class.active]="currentRoute === 'vida'" (click)="IrParaVida(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>school</mat-icon></span>
+      <span class="nav-label collapsible">Vida no Curso</span>
+    </a>
+    <a class="nav-item" [class.active]="currentRoute === 'curso'" (click)="IrParaCurso(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>book</mat-icon></span>
+      <span class="nav-label collapsible">Estrutura Curricular</span>
+    </a>
+    <a class="nav-item" [class.active]="currentRoute === 'turmas'" (click)="IrParaTurmas(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>group</mat-icon></span>
+      <span class="nav-label collapsible">Turmas</span>
+    </a>
+    <a class="nav-item" [class.active]="currentRoute === 'faqs'" (click)="IrParaFaqs(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>help_outline</mat-icon></span>
+      <span class="nav-label collapsible">Dúvidas Frequentes</span>
+    </a>
+    <a class="nav-item" [class.active]="currentRoute === 'simulador'"
+      (click)="IrParaSimulador(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>grading</mat-icon></span>
+      <span class="nav-label collapsible">Simulador de CR</span>
+    </a>
+    <a class="nav-item" [class.active]="currentRoute === 'creditos'" (click)="IrParaCreditos(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>person_outline</mat-icon></span>
+      <span class="nav-label collapsible">Créditos</span>
+    </a>
+    <a *ngIf="isAdmin" class="nav-item" [class.active]="currentRoute === 'admin'"
+      (click)="IrParaAdmin(); closeSidebarOnMobile()">
+      <span class="nav-icon"><mat-icon>admin_panel_settings</mat-icon></span>
+      <span class="nav-label collapsible">Admin</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-updates collapsible">
+    <span class="nav-section-label">
+      <mat-icon style="font-size:14px;vertical-align:middle;">update</mat-icon> Atualizações
+    </span>
+    <ul>
+      <li>Revamp do design do fórum</li>
+    </ul>
+    <button class="repo-btn" (click)="abrirSite('https://github.com/Icharu/forum')">
+      <mat-icon style="font-size:16px;">open_in_new</mat-icon> Repositório
+    </button>
+  </div>
+
+</aside>

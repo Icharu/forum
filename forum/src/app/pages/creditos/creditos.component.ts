@@ -4,13 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { SidebarComponent } from '../../components/sidebar/sidebar';
+import { TopbarComponent } from '../../components/topbar/topbar';
+import { FloatingCardComponent } from '../../components/floating-card/floating-card';
 
 @Component({
     selector: 'app-creditos',
     templateUrl: './creditos.component.html',
     styleUrls: ['./creditos.component.css'],
     standalone: true,
-    imports: [MatIconModule, CommonModule]
+    imports: [MatIconModule, CommonModule, SidebarComponent, TopbarComponent, FloatingCardComponent]
 })
 export class CreditosComponent implements OnInit {
 

@@ -1,0 +1,74 @@
+/* =====================
+   INTRO OVERLAY
+===================== */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Transparent tinted glass — blurs the page content behind it */
+  background: rgba(43, 60, 80, 0.25);
+  backdrop-filter: blur(20px) brightness(0.85);
+  -webkit-backdrop-filter: blur(20px) brightness(0.85);
+  opacity: 1;
+  transition:
+    backdrop-filter 0.9s ease-out,
+    -webkit-backdrop-filter 0.9s ease-out,
+    opacity         0.9s ease-out,
+    background      0.9s ease-out;
+  pointer-events: all;
+}
+
+/* Unblur: backdrop blur fades to 0 → page reveals clearly */
+.intro-overlay.leaving {
+  backdrop-filter: blur(0px) brightness(1);
+  -webkit-backdrop-filter: blur(0px) brightness(1);
+  background: rgba(43, 60, 80, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =====================
+   INNER CONTENT
+===================== */
+.intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: introFadeIn 0.5s ease-out forwards;
+}
+
+.intro-icon {
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
+}
+
+.intro-title {
+  font-family: 'Lora', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
+  margin: 0;
+}
+
+.intro-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+
+@keyframes introFadeIn {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

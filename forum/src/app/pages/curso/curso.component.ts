@@ -5,13 +5,16 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
 import { UserService } from '../../services/user.service';
+import { SidebarComponent } from '../../components/sidebar/sidebar';
+import { TopbarComponent } from '../../components/topbar/topbar';
+import { FloatingCardComponent } from '../../components/floating-card/floating-card';
 
 @Component({
     selector: 'app-curso',
     templateUrl: './curso.component.html',
     styleUrls: ['./curso.component.css'],
     standalone: true,
-    imports: [MatIconModule, CommonModule]
+    imports: [MatIconModule, CommonModule, SidebarComponent, TopbarComponent, FloatingCardComponent]
 })
 export class CursoComponent implements OnInit {
 

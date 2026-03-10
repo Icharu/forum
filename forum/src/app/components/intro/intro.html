@@ -1,0 +1,18 @@
+<div class="intro-overlay" *ngIf="visible" [class.leaving]="leaving">
+  <div class="intro-inner">
+    <!-- Gradient logo icon -->
+    <svg class="intro-icon" width="52" height="52" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="introGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#a8d4f0"/>
+          <stop offset="100%" stop-color="#ffffff"/>
+        </linearGradient>
+      </defs>
+      <rect width="28" height="28" rx="8" fill="url(#introGrad)" fill-opacity="0.18"/>
+      <path d="M7 9h14M7 14h10M7 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <h1 class="intro-title">Fórum de EngComp</h1>
+    <p class="intro-sub">UEMA — 2026.1</p>
+  </div>
+</div>

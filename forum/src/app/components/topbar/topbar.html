@@ -1,0 +1,18 @@
+<!-- TOP NAVBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="toggle-btn" (click)="onToggle()">
+      <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+    <div class="topbar-title">
+      <h1>Fórum do Curso de Engenharia da Computação</h1>
+      <span class="topbar-dot">·</span>
+      <span class="topbar-sub">UEMA — 2026.1</span>
+    </div>
+  </div>
+  <div class="topbar-tabs">
+    <button class="tab" [class.active]="activeTab === 'home'" (click)="VoltarForum()">Notícias</button>
+    <button class="tab" [class.active]="activeTab === 'curso'" (click)="IrParaVida()">Curso</button>
+    <button class="tab" [class.active]="activeTab === 'simulador'" (click)="IrParaSimulador()">Simulador</button>
+  </div>
+</header>

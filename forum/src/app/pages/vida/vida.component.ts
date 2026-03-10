@@ -5,13 +5,16 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { PdfDownloadService } from '../../services/pdfdownload.service';
+import { SidebarComponent } from '../../components/sidebar/sidebar';
+import { TopbarComponent } from '../../components/topbar/topbar';
+import { FloatingCardComponent } from '../../components/floating-card/floating-card';
 
 @Component({
   selector: 'app-vida',
   templateUrl: './vida.component.html',
   styleUrls: ['./vida.component.css'],
   standalone: true,
-  imports: [MatIconModule, CommonModule]
+  imports: [MatIconModule, CommonModule, SidebarComponent, TopbarComponent, FloatingCardComponent]
 })
 export class VidaComponent implements OnInit {
 
